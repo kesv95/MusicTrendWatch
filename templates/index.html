@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MUSIC TREND WATCH</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<!-- 헤더 -->
+<header class="top-header" id="top">
+
+    <nav class="chart-nav">
+        <a href="#kpop-chart" class="nav-button">K-POP</a>
+        <a href="#jpop-chart" class="nav-button">J-POP</a>
+    </nav>
+
+    <div class="header-inner">
+        <a href="/" class="logo">MUSIC<span>TREND</span></a>
+        <span class="header-label">GLOBAL MUSIC BATTLE</span>
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <!-- 메인 소개 -->
+    <section class="hero">
+
+        <div class="hero-tag">MUSIC DISCOVERY PLATFORM</div>
+
+        <h1>MUSIC TREND WATCH</h1>
+
+        <p>
+            Discover what's trending in the world of music.<br>
+            Explore the latest K-POP and J-POP trends.
+        </p>
+
+        <div class="hero-bottom">
+            <span id="update-time">데이터를 불러오는 중입니다.</span>
+
+            <button id="refresh-button" class="refresh-button">
+                ↻ 새로고침
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- K-POP 차트 -->
+    <section class="chart-section" id="kpop-chart">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="section-subtitle">KOREAN MUSIC</span>
+                <h2>K-POP <span>CHART</span></h2>
+                <p>한국 대중음악 트렌드</p>
+            </div>
+
+            <div class="chart-count" id="kpop-count">
+                0 TRACKS
+            </div>
+
+        </div>
+
+        <div class="track-grid" id="kpop-list">
+            <div class="loading">
+                K-POP 데이터를 불러오는 중...
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- J-POP 차트 -->
+    <section class="chart-section" id="jpop-chart">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="section-subtitle">JAPANESE MUSIC</span>
+                <h2>J-POP <span>CHART</span></h2>
+                <p>일본 대중음악 트렌드</p>
+            </div>
+
+            <div class="chart-count" id="jpop-count">
+                0 TRACKS
+            </div>
+
+        </div>
+
+        <div class="track-grid" id="jpop-list">
+            <div class="loading">
+                J-POP 데이터를 불러오는 중...
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- 데이터 안내 -->
+    <p class="data-notice">
+        Data Source: YouTube Data API v3 · Music Category<br>
+        장르 분류는 아티스트 및 채널명 기반의 임시 분류입니다.
+        순위는 각 국가에서 수집한 원본 차트의 순위입니다.
+    </p>
+
+</main>
+
+
+<!-- 푸터 -->
+<footer>
+
+    <div class="footer-inner">
+        <strong>MUSIC TREND WATCH</strong>
+        <span>© 2026 MUSIC TREND WATCH</span>
+    </div>
+
+</footer>
+
+
+<!-- TOP 버튼 -->
+<button id="top-button"
+        class="top-button"
+        aria-label="페이지 최상단으로 이동">
+
+    ↑
+    <span>TOP</span>
+
+</button>
+
+
+<!-- JavaScript -->
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
