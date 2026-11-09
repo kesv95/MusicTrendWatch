@@ -1,8 +1,7 @@
 /* =========================================
    MUSIC TREND WATCH
-   K-POP / J-POP CHART
+   K-POP / J-POP : country-wide music trends
 ========================================= */
-
 
 // =========================================
 // 1. HTML 요소
@@ -10,292 +9,172 @@
 
 const koreaList = document.getElementById("kpop-list");
 const japanList = document.getElementById("jpop-list");
-
 const koreaCount = document.getElementById("kpop-count");
 const japanCount = document.getElementById("jpop-count");
-
 const updateTime = document.getElementById("update-time");
 const refreshButton = document.getElementById("refresh-button");
 
-
 // =========================================
-// 2. K-POP 분류 키워드
-// =========================================
-
-const KPOP_KEYWORDS = [
-    "bts",
-    "blackpink",
-    "illit",
-    "resc ene",
-    "resc ene - topic",
-    "res cene",
-    "rescene",
-    "treasure",
-    "riize",
-    "jisoo",
-    "hybe labels",
-    "a2o",
-    "aespa",
-    "newjeans",
-    "ive",
-    "le sserafim",
-    "stray kids",
-    "twice",
-    "seventeen",
-    "enhypen",
-    "txt",
-    "nct",
-    "exo",
-    "red velvet",
-    "nmixx",
-    "itzy",
-    "akmu",
-    "day6",
-    "babymonster",
-    "gidle",
-    "(g)i-dle",
-    "kiss of life",
-    "zerobaseone",
-    "boynextdoor",
-    "tws",
-    "stayc",
-    "ateez",
-    "monsta x",
-    "shinee",
-    "super junior",
-    "bigbang",
-    "exo",
-    "iu",
-    "taeyeon"
-];
-
-
-// =========================================
-// 3. J-POP 분류 키워드
+// 2. 갱신 설정
 // =========================================
 
-const JPOP_KEYWORDS = [
-    "be:first",
-    "m!lk",
-    "hana official",
-    "kenshi yonezu",
-    "米津玄師",
-    "mrs. green apple",
-    "hey! say! jump",
-    "key to lit",
-    "超特急",
-    "ak-69",
-    "tatsuya kitani",
-    "キタニタツヤ",
-    "radwimps",
-    "桑田佳祐",
-    "buddiis",
-    "back number",
-    "fujii kaze",
-    "藤井風",
-    "travis japan",
-    "sixtones",
-    "jo1",
-    "one ok rock",
-    "aimyon",
-    "あいみょん",
-    "one n' only",
-    "ado",
-    "yoasobi",
-    "official髭男dism",
-    "髭男",
-    "king gnu",
-    "imase",
-    "優里",
-    "yuri",
-    "vaundy",
-    "atarashii gakko",
-    "新しい学校のリーダーズ",
-    "snow man",
-    "naniwa danshi",
-    "number_i",
-    "sakanaction",
-    "サカナクション",
-    "aimer",
-    "liSA",
-    "eill",
-    "yonezu"
-];
+// 페이지가 열려 있는 동안 1시간마다 갱신
+const REFRESH_INTERVAL = 60 * 60 * 1000;
+const DISPLAY_LIMIT = 30;
 
+let isRefreshing = false;
 
 // =========================================
-// 4. 장르 분류
-// =========================================
-
-function classifyGenre(track) {
-
-    const channel = (track.artist || "").toLowerCase();
-    const title = (track.title || "").toLowerCase();
-
-    const searchText = `${channel} ${title}`;
-
-    // K-POP 확인
-    const isKpop = KPOP_KEYWORDS.some(keyword =>
-        searchText.includes(keyword.toLowerCase())
-    );
-
-    if (isKpop) {
-        return "kpop";
-    }
-
-    // J-POP 확인
-    const isJpop = JPOP_KEYWORDS.some(keyword =>
-        searchText.includes(keyword.toLowerCase())
-    );
-
-    if (isJpop) {
-        return "jpop";
-    }
-
-    // 분류되지 않은 음악
-    return "other";
-}
-
-
-// =========================================
-// 5. 숫자 형식 변환
+// 3. 공통 유틸리티
 // =========================================
 
 function formatNumber(number) {
-
     return Number(number || 0).toLocaleString("ko-KR");
-
 }
-
-
-// =========================================
-// 6. 날짜 형식 변환
-// =========================================
 
 function formatDate(dateString) {
-
-    if (!dateString) {
-        return "날짜 정보 없음";
-    }
+    if (!dateString) return "날짜 정보 없음";
 
     const date = new Date(dateString);
-
-    if (Number.isNaN(date.getTime())) {
-        return "날짜 정보 없음";
-    }
+    if (Number.isNaN(date.getTime())) return "날짜 정보 없음";
 
     return date.toLocaleDateString("ko-KR");
-
 }
 
+function formatRankChange(track) {
+    if (track.rank_status === "NEW") return "NEW";
+    if (track.rank_status === "UP") return `↑ ${track.rank_difference}`;
+    if (track.rank_status === "DOWN") {
+        return `↓ ${Math.abs(track.rank_difference)}`;
+    }
+    if (track.rank_status === "SAME") return "—";
+    return "비교 정보 없음";
+}
+
+function formatViewChange(track) {
+    if (track.view_status === "NEW") return "첫 수집";
+    if (track.view_difference === null ||
+        track.view_difference === undefined) {
+        return "비교 정보 없음";
+    }
+    if (track.view_status === "UP") {
+        return `↑ ${formatNumber(track.view_difference)}`;
+    }
+    if (track.view_status === "DOWN") {
+        return `↓ ${formatNumber(Math.abs(track.view_difference))}`;
+    }
+    if (track.view_status === "SAME") return "—";
+    return "비교 정보 없음";
+}
 
 // =========================================
-// 7. 음악 카드 생성
+// 4. 국가별 차트 구분
+// =========================================
+
+// 이 프로젝트의 K-POP/J-POP은 아이돌 장르만 뜻하지 않는다.
+// 한국/일본을 대상으로 수집한 대중음악 후보 묶음이다.
+function getDisplayChart(track) {
+    return track.sourceCountry === "korea" ? "kpop" : "jpop";
+}
+
+// =========================================
+// 5. 음악 카드 생성
 // =========================================
 
 function createTrackCard(track) {
-
-    // 카드
     const card = document.createElement("article");
     card.className = "track-card";
 
-
-    // 순위
     const rank = document.createElement("div");
     rank.className = "track-rank";
+    rank.textContent = String(track.genreRank || "-").padStart(2, "0");
 
-    rank.textContent = String(
-        track.genreRank || track.rank || "-"
-    ).padStart(2, "0");
-
-
-    // 썸네일 링크
     const thumbnailLink = document.createElement("a");
-
     thumbnailLink.className = "thumbnail-link";
     thumbnailLink.href = track.url || "#";
     thumbnailLink.target = "_blank";
     thumbnailLink.rel = "noopener noreferrer";
 
-
-    // 썸네일 이미지
     const thumbnail = document.createElement("img");
-
     thumbnail.className = "track-thumbnail";
     thumbnail.src = track.thumbnail || "";
     thumbnail.alt = track.title || "음악 썸네일";
     thumbnail.loading = "lazy";
-
     thumbnailLink.appendChild(thumbnail);
 
-
-    // 음악 정보 영역
     const info = document.createElement("div");
     info.className = "track-info";
+    info.style.minWidth = "0";
 
-
-    // 제목
     const title = document.createElement("a");
-
     title.className = "track-title";
     title.href = track.url || "#";
     title.target = "_blank";
     title.rel = "noopener noreferrer";
-
     title.textContent = track.title || "제목 없음";
+    title.title = track.title || "제목 없음";
+    title.style.display = "block";
+    title.style.maxWidth = "100%";
+    title.style.overflow = "hidden";
+    title.style.whiteSpace = "nowrap";
+    title.style.textOverflow = "ellipsis";
+    title.style.paddingRight = "85px";
+    title.style.boxSizing = "border-box";
 
-
-    // 채널명
     const channel = document.createElement("div");
-
     channel.className = "track-channel";
-    channel.textContent = track.artist || "채널 정보 없음";
+    channel.textContent = track.channel || track.artist || "채널 정보 없음";
 
-
-    // 조회수
     const views = document.createElement("div");
-
     views.className = "track-views";
+    views.textContent = `조회수 ${formatNumber(track.view_count)}회`;
 
-    views.textContent =
-        `조회수 ${formatNumber(track.view_count)}회`;
-
-
-    // 게시일
     const date = document.createElement("div");
-
     date.className = "track-date";
     date.textContent = formatDate(track.published_at);
 
+    const trend = document.createElement("div");
+    trend.className = "track-trend";
 
-    // 국가 표시
-    const region = document.createElement("span");
+    const rankTrend = document.createElement("span");
+    rankTrend.className = "rank-trend";
+    rankTrend.textContent = `순위 ${formatRankChange(track)}`;
 
-    region.className = "region-label";
+    const viewTrend = document.createElement("span");
+    viewTrend.className = "view-trend";
+    viewTrend.textContent = `조회수 ${formatViewChange(track)}`;
 
-
-    if (track.source_type === "search") {
-
-        region.textContent = "J-POP SEARCH";
-
-    } else {
-
-        const countryLabel =
-            track.sourceCountry === "korea"
-                ? "KR CHART"
-                : "JP CHART";
-
-        region.textContent =
-            `${countryLabel} #${track.original_rank || track.rank}`;
-
+    if (track.rank_status === "UP") {
+        rankTrend.classList.add("trend-up");
+    } else if (track.rank_status === "DOWN") {
+        rankTrend.classList.add("trend-down");
     }
 
+    if (track.view_status === "UP") {
+        viewTrend.classList.add("trend-up");
+    } else if (track.view_status === "DOWN") {
+        viewTrend.classList.add("trend-down");
+    }
 
-    // 요소 추가
+    trend.appendChild(rankTrend);
+    trend.appendChild(viewTrend);
+
+    const region = document.createElement("span");
+    region.className = "region-label";
+
+    const countryLabel = track.sourceCountry === "korea" ? "KR" : "JP";
+    if (track.source_type === "search") {
+        region.textContent = `${countryLabel} SEARCH`;
+    } else {
+        region.textContent =
+            `${countryLabel} CHART #${track.original_rank || track.rank || "-"}`;
+    }
+
     info.appendChild(title);
     info.appendChild(channel);
     info.appendChild(views);
     info.appendChild(date);
+    info.appendChild(trend);
 
     card.appendChild(rank);
     card.appendChild(thumbnailLink);
@@ -303,426 +182,361 @@ function createTrackCard(track) {
     card.appendChild(region);
 
     return card;
-
 }
 
-
 // =========================================
-// 8. 차트 화면 출력
+// 6. 차트 화면 출력
 // =========================================
 
 function renderChart(container, tracks, countElement) {
-
     container.innerHTML = "";
 
-    // 데이터가 없는 경우
     if (!tracks || tracks.length === 0) {
-
         const message = document.createElement("div");
-
         message.className = "empty-message";
         message.textContent = "표시할 음악 데이터가 없습니다.";
-
         container.appendChild(message);
-
         countElement.textContent = "0 TRACKS";
-
         return;
     }
 
-
-    // 음악 카드 출력
     tracks.forEach(track => {
-
-        const card = createTrackCard(track);
-
-        container.appendChild(card);
-
+        container.appendChild(createTrackCard(track));
     });
 
-
-    // 곡 개수 표시
-    countElement.textContent =
-        `${tracks.length} TRACKS`;
-
+    countElement.textContent = `${tracks.length} TRACKS`;
 }
 
-
 // =========================================
-// 9. 국가별 API 데이터 가져오기
+// 7. 국가별 API 데이터 가져오기
 // =========================================
 
 async function fetchCountry(country) {
+    const response = await fetch(`/api/music/${country}`);
 
-    const response = await fetch(
-        `/api/music/${country}`
-    );
+    let result;
+    try {
+        result = await response.json();
+    } catch {
+        throw new Error(`응답 JSON 변환 실패 (${response.status})`);
+    }
 
-    const result = await response.json();
-
-
-    // API 오류 확인
     if (!response.ok || !result.success) {
-
         throw new Error(
             result.message ||
             result.error ||
             `${country} 데이터 수집 실패`
         );
-
     }
 
-
-    // 국가 정보 추가
-    return result.data.map(track => ({
-
+    const tracks = (result.data || []).map(track => ({
         ...track,
-
         sourceCountry: country
-
     }));
 
+    return {
+        tracks,
+        warning: result.search_warning || null,
+        chartCount: result.chart_count || 0,
+        searchCount: result.search_count || 0
+    };
 }
 
-
 // =========================================
-// 10. 중복 동영상 제거
-// =========================================
-
-function removeDuplicates(tracks) {
-
-    const seen = new Set();
-
-    return tracks.filter(track => {
-
-        if (!track.video_id) {
-            return true;
-        }
-
-        if (seen.has(track.video_id)) {
-            return false;
-        }
-
-        seen.add(track.video_id);
-
-        return true;
-
-    });
-
-}
-
-
-// =========================================
-// 11. 순위 정렬
+// 8. 중복 제거 및 통합 정렬
 // =========================================
 
-
-function sortByRank(a, b) {
-
-    const aIsSearch = a.source_type === "search";
-    const bIsSearch = b.source_type === "search";
-
-    // 기존 차트 데이터를 검색 데이터보다 먼저 배치
-    if (aIsSearch !== bIsSearch) {
-
-        return aIsSearch ? 1 : -1;
-
-    }
-
-    // 기존 차트 데이터는 원본 순위 기준
-    if (!aIsSearch) {
-
-        return (
+function mergeAndSortTracks(tracks) {
+    const chartTracks = tracks
+        .filter(track => track.source_type === "chart")
+        .sort((a, b) =>
             (a.original_rank || a.rank || 9999) -
             (b.original_rank || b.rank || 9999)
         );
 
+    const searchTracks = tracks
+        .filter(track => track.source_type === "search")
+        .sort((a, b) =>
+            Number(b.view_count || 0) - Number(a.view_count || 0)
+        );
+
+    // TOP 30에 기존 국가 인기 차트 20개와 검색 후보 최대 10개를 반영한다.
+    // 중복 등으로 검색 후보가 부족하면 남은 차트 데이터로 채운다.
+    const selected = [];
+    const seen = new Set();
+
+    function addUnique(list, limit) {
+        let added = 0;
+
+        for (const track of list) {
+            if (!track.video_id || seen.has(track.video_id)) continue;
+
+            seen.add(track.video_id);
+            selected.push(track);
+            added += 1;
+
+            if (added >= limit || selected.length >= DISPLAY_LIMIT) break;
+        }
     }
 
-    // 검색 데이터는 조회수 기준
-    return b.view_count - a.view_count;
+    addUnique(chartTracks, 20);
+    addUnique(searchTracks, DISPLAY_LIMIT - selected.length);
 
+    // 검색 결과가 부족해 TOP 30이 채워지지 않으면 남은 차트 데이터로 보충
+    if (selected.length < DISPLAY_LIMIT) {
+        addUnique(chartTracks, DISPLAY_LIMIT - selected.length);
+    }
+
+    return selected.slice(0, DISPLAY_LIMIT).map((track, index) => ({
+        ...track,
+        genreRank: index + 1
+    }));
 }
 
+// =========================================
+// 9. 순위 및 조회수 변동 기록
+// =========================================
+
+async function saveChartSnapshot(chart, tracks) {
+    const response = await fetch(`/api/music/snapshot/${chart}_v2`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            tracks: tracks.map(track => ({
+                video_id: track.video_id,
+                rank: track.genreRank,
+                view_count: track.view_count
+            }))
+        })
+    });
+
+    let result;
+    try {
+        result = await response.json();
+    } catch {
+        throw new Error(`Snapshot 응답 변환 실패 (${response.status})`);
+    }
+
+    if (!response.ok || !result.success) {
+        throw new Error(
+            result.message || `Snapshot 저장 실패: ${response.status}`
+        );
+    }
+
+    return result.changes || {};
+}
+
+function attachChanges(tracks, changes) {
+    return tracks.map(track => ({
+        ...track,
+        ...(changes[track.video_id] || {})
+    }));
+}
 
 // =========================================
-// 12. 전체 음악 데이터 갱신
+// 10. 오류 메시지 출력
+// =========================================
+
+function showCountryError(container, countElement, country, error) {
+    container.innerHTML = "";
+
+    const message = document.createElement("div");
+    message.className = "empty-message";
+    message.textContent =
+        `${country} 데이터를 불러오지 못했습니다: ${error.message}`;
+
+    container.appendChild(message);
+    countElement.textContent = "ERROR";
+}
+
+// =========================================
+// 11. 전체 음악 데이터 갱신
 // =========================================
 
 async function refreshMusic() {
+    if (isRefreshing) return;
 
-    // 새로고침 버튼 비활성화
-    refreshButton.disabled = true;
+    isRefreshing = true;
 
-    refreshButton.textContent = "불러오는 중...";
-
-
-    // 각 국가의 데이터 수집 결과
-    let koreaData = [];
-    let japanData = [];
-
-    let koreaSuccess = false;
-    let japanSuccess = false;
-
-    const errors = [];
-
-
-    try {
-
-        // 한국 데이터 수집
-        try {
-
-            koreaData = await fetchCountry("korea");
-
-            koreaSuccess = true;
-
-        } catch (error) {
-
-            console.error("한국 API 오류:", error);
-
-            errors.push(`한국: ${error.message}`);
-
-            koreaList.innerHTML = "";
-
-            const message = document.createElement("div");
-
-            message.className = "empty-message";
-            message.textContent =
-                `한국 데이터를 불러오지 못했습니다: ${error.message}`;
-
-            koreaList.appendChild(message);
-
-            koreaCount.textContent = "ERROR";
-
-        }
-
-
-        // 일본 데이터 수집
-        try {
-
-            japanData = await fetchCountry("japan");
-
-            japanSuccess = true;
-
-        } catch (error) {
-
-            console.error("일본 API 오류:", error);
-
-            errors.push(`일본: ${error.message}`);
-
-            japanList.innerHTML = "";
-
-            const message = document.createElement("div");
-
-            message.className = "empty-message";
-            message.textContent =
-                `일본 데이터를 불러오지 못했습니다: ${error.message}`;
-
-            japanList.appendChild(message);
-
-            japanCount.textContent = "ERROR";
-
-        }
-
-
-        // 수집된 데이터 합치기
-        const allTracks = [
-            ...koreaData,
-            ...japanData
-        ];
-
-        // 장르별 분류
-        let kpopTracks = allTracks.filter(track => {
-
-            return classifyGenre(track) === "kpop";
-
-        });
-
-        let jpopTracks = allTracks.filter(track => {
-
-            return classifyGenre(track) === "jpop";
-
-        });
-
-
-        // 순위 정렬
-        kpopTracks.sort(sortByRank);
-        jpopTracks.sort(sortByRank);
-
-
-        // 중복 제거
-        kpopTracks = removeDuplicates(kpopTracks);
-        jpopTracks = removeDuplicates(jpopTracks);
-
-
-        // 장르별 순위 부여 및 최대 30곡 선정
-        kpopTracks = kpopTracks
-            .slice(0, 30)
-            .map((track, index) => ({
-                ...track,
-                genreRank: index + 1
-            }));
-
-        jpopTracks = jpopTracks
-            .slice(0, 30)
-            .map((track, index) => ({
-                ...track,
-                genreRank: index + 1
-            }));
-
-        // K-POP 출력
-        if (koreaSuccess || japanSuccess) {
-
-            renderChart(
-                koreaList,
-                kpopTracks,
-                koreaCount
-            );
-
-        }
-
-
-        // J-POP 출력
-        if (koreaSuccess || japanSuccess) {
-
-            renderChart(
-                japanList,
-                jpopTracks,
-                japanCount
-            );
-
-        }
-
-
-        // 미분류 곡 개수
-        const otherCount = allTracks.filter(track => {
-
-            return classifyGenre(track) === "other";
-
-        }).length;
-
-
-        // 조회 상태 표시
-        const now = new Date();
-
-        if (errors.length > 0) {
-
-            updateTime.textContent =
-                `일부 데이터 조회 실패 | ${errors.join(" / ")}`;
-
-        } else {
-
-            updateTime.textContent =
-                `마지막 조회: ${now.toLocaleString("ko-KR")} | 미분류 ${otherCount}개`;
-
-        }
-
-
-        // 콘솔 확인
-        console.log("한국 데이터:", koreaData);
-        console.log("일본 데이터:", japanData);
-        console.log("K-POP 데이터:", kpopTracks);
-        console.log("J-POP 데이터:", jpopTracks);
-        console.log("미분류 데이터:", otherCount);
-
-
-    } catch (error) {
-
-        console.error("전체 차트 오류:", error);
-
-        updateTime.textContent =
-            `차트 갱신 오류: ${error.message}`;
-
-    } finally {
-
-        // 새로고침 버튼 복구
-        refreshButton.disabled = false;
-
-        refreshButton.textContent = "↻ 새로고침";
-
+    if (refreshButton) {
+        refreshButton.disabled = true;
+        refreshButton.textContent = "불러오는 중...";
     }
 
+    const errors = [];
+    const warnings = [];
+
+    try {
+        // 한국과 일본 데이터를 병렬로 수집
+        const [koreaResult, japanResult] = await Promise.allSettled([
+            fetchCountry("korea"),
+            fetchCountry("japan")
+        ]);
+
+        let kpopTracks = [];
+        let jpopTracks = [];
+        let koreaSuccess = false;
+        let japanSuccess = false;
+
+        if (koreaResult.status === "fulfilled") {
+            koreaSuccess = true;
+            const result = koreaResult.value;
+
+            // 국가별 대중음악 후보를 K-POP 차트에 통합
+            kpopTracks = mergeAndSortTracks(result.tracks);
+
+            if (result.warning) {
+                warnings.push(`한국 검색: ${result.warning}`);
+            }
+        } else {
+            errors.push(`한국: ${koreaResult.reason.message}`);
+            showCountryError(
+                koreaList, koreaCount, "한국",
+                koreaResult.reason
+            );
+        }
+
+        if (japanResult.status === "fulfilled") {
+            japanSuccess = true;
+            const result = japanResult.value;
+
+            // 국가별 대중음악 후보를 J-POP 차트에 통합
+            jpopTracks = mergeAndSortTracks(result.tracks);
+
+            if (result.warning) {
+                warnings.push(`일본 검색: ${result.warning}`);
+            }
+        } else {
+            errors.push(`일본: ${japanResult.reason.message}`);
+            showCountryError(
+                japanList, japanCount, "일본",
+                japanResult.reason
+            );
+        }
+
+        // 순위 기록은 국가별로 독립 저장
+        const snapshotTasks = [];
+
+        if (koreaSuccess) {
+            snapshotTasks.push(
+                saveChartSnapshot("kpop", kpopTracks)
+                    .then(changes => {
+                        kpopTracks = attachChanges(kpopTracks, changes);
+                    })
+                    .catch(error => {
+                        console.error("K-POP 순위 기록 오류:", error);
+                        warnings.push(`K-POP 순위 기록: ${error.message}`);
+                    })
+            );
+        }
+
+        if (japanSuccess) {
+            snapshotTasks.push(
+                saveChartSnapshot("jpop", jpopTracks)
+                    .then(changes => {
+                        jpopTracks = attachChanges(jpopTracks, changes);
+                    })
+                    .catch(error => {
+                        console.error("J-POP 순위 기록 오류:", error);
+                        warnings.push(`J-POP 순위 기록: ${error.message}`);
+                    })
+            );
+        }
+
+        await Promise.all(snapshotTasks);
+
+        if (koreaSuccess) {
+            renderChart(koreaList, kpopTracks, koreaCount);
+        }
+
+        if (japanSuccess) {
+            renderChart(japanList, jpopTracks, japanCount);
+        }
+
+        const now = new Date();
+        const statusParts = [
+            `마지막 조회: ${now.toLocaleString("ko-KR")}`,
+            `K-POP ${koreaSuccess ? kpopTracks.length + "곡" : "수집 실패"}`,
+            `J-POP ${japanSuccess ? jpopTracks.length + "곡" : "수집 실패"}`
+        ];
+
+        if (errors.length) statusParts.push(errors.join(" / "));
+        if (warnings.length) statusParts.push(warnings.join(" / "));
+
+        updateTime.textContent = statusParts.join(" | ");
+
+        console.log("한국 음악 후보:", kpopTracks);
+        console.log("일본 음악 후보:", jpopTracks);
+        console.log("수집 오류:", errors);
+        console.log("수집 경고:", warnings);
+
+    } catch (error) {
+        console.error("전체 차트 오류:", error);
+        updateTime.textContent = `차트 갱신 오류: ${error.message}`;
+    } finally {
+        isRefreshing = false;
+
+        if (refreshButton) {
+            refreshButton.disabled = false;
+            refreshButton.textContent = "↻ 새로고침";
+        }
+    }
 }
 
-
 // =========================================
-// 13. TOP 버튼
+// 12. TOP 버튼
 // =========================================
 
 function initializeTopButton() {
-
     const topButton = document.getElementById("top-button");
-
-    if (!topButton) {
-        return;
-    }
+    if (!topButton) return;
 
     topButton.addEventListener("click", () => {
-
         const topElement = document.getElementById("top");
-
         if (topElement) {
-
             topElement.scrollIntoView({
-
                 behavior: "smooth",
-
                 block: "start"
-
             });
-
         }
-
     });
-
 }
 
-
 // =========================================
-// 14. 새로고침 버튼
+// 13. 새로고침 버튼
 // =========================================
 
 function initializeRefreshButton() {
-
-    if (!refreshButton) {
-        return;
-    }
-
+    if (!refreshButton) return;
     refreshButton.addEventListener("click", refreshMusic);
-
 }
 
+// =========================================
+// 14. 자동 갱신
+// =========================================
+
+function initializeAutoRefresh() {
+    window.setInterval(refreshMusic, REFRESH_INTERVAL);
+}
 
 // =========================================
 // 15. 페이지 초기화
 // =========================================
 
 function initializeApp() {
-
     console.log("MUSIC TREND WATCH 시작");
 
-    // TOP 버튼 이벤트
     initializeTopButton();
-
-    // 새로고침 버튼 이벤트
     initializeRefreshButton();
+    initializeAutoRefresh();
 
-    // 최초 데이터 수집
     refreshMusic();
-
 }
 
-
-// DOM 로딩 완료 후 실행
 if (document.readyState === "loading") {
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        initializeApp
-    );
-
+    document.addEventListener("DOMContentLoaded", initializeApp);
 } else {
-
     initializeApp();
-
 }

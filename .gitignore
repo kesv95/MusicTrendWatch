@@ -1,7 +1,18 @@
+# Secrets and local environment files
 .env
+.env.*
+!.env.example
+
+# Python virtual environments and generated files
 .venv/
 venv/
 __pycache__/
-*.pyc
+*.py[cod]
+
+# Local database files
 database/*.db
+database/*.sqlite
+database/*.sqlite3
+
+# IDE settings and local data source configuration
 .idea/
