@@ -13,6 +13,24 @@ const koreaCount = document.getElementById("kpop-count");
 const japanCount = document.getElementById("jpop-count");
 const updateTime = document.getElementById("update-time");
 const refreshButton = document.getElementById("refresh-button");
+const configuredApiBase = document
+    .querySelector('meta[name="music-api-base"]')
+    ?.content.trim().replace(/\/+$/, "") || "";
+
+function apiUrl(path) {
+    if (configuredApiBase) return `${configuredApiBase}${path}`;
+
+    const host = window.location.hostname;
+    const isLocalServer = ["localhost", "127.0.0.1", "::1"].includes(host);
+    if (!isLocalServer) {
+        throw new Error(
+            "GitHub Pages에는 Flask API가 없습니다. index.html의 " +
+            "music-api-base에 배포한 백엔드 주소를 설정해 주세요."
+        );
+    }
+
+    return path;
+}
 
 // =========================================
 // 2. 갱신 설정
@@ -212,7 +230,7 @@ function renderChart(container, tracks, countElement) {
 // =========================================
 
 async function fetchCountry(country) {
-    const response = await fetch(`/api/music/${country}`);
+    const response = await fetch(apiUrl(`/api/music/${country}`));
 
     let result;
     try {
@@ -298,7 +316,7 @@ function mergeAndSortTracks(tracks) {
 // =========================================
 
 async function saveChartSnapshot(chart, tracks) {
-    const response = await fetch(`/api/music/snapshot/${chart}_v2`, {
+    const response = await fetch(apiUrl(`/api/music/snapshot/${chart}_v2`), {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

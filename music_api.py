@@ -17,6 +17,11 @@ app = Flask(__name__, template_folder=BASE_DIR)
 DB_PATH = os.path.join(BASE_DIR, "database", "music.db")
 
 API_KEY = os.getenv("YOUTUBE_API_KEY")
+CORS_ALLOWED_ORIGINS = {
+    origin.strip().rstrip("/")
+    for origin in os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
+    if origin.strip()
+}
 VIDEO_API_URL = "https://www.googleapis.com/youtube/v3/videos"
 SEARCH_API_URL = "https://www.googleapis.com/youtube/v3/search"
 
@@ -77,6 +82,17 @@ def initialize_database():
 
 
 initialize_database()
+
+
+@app.after_request
+def add_cors_headers(response):
+    origin = request.headers.get("Origin", "").rstrip("/")
+    if origin in CORS_ALLOWED_ORIGINS:
+        response.headers["Access-Control-Allow-Origin"] = origin
+        response.headers["Access-Control-Allow-Methods"] = "GET, POST, OPTIONS"
+        response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+        response.headers["Vary"] = "Origin"
+    return response
 
 
 def youtube_get(url, params):
