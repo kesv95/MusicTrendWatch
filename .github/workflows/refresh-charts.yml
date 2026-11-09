@@ -1,6 +1,10 @@
 name: Refresh K-POP and J-POP charts
 
 on:
+  push:
+    paths:
+      - "scripts/update_chart_data.py"
+      - ".github/workflows/refresh-charts.yml"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:

@@ -257,10 +257,13 @@ async function fetchCountry(country) {
             warning: result.error
                 ? `${result.error.type}: ${result.error.message} · ` +
                   `마지막 정상 수집 ${result.updated_at ? formatDateTime(result.updated_at) : "기록 없음"}`
-                : null,
+                : chartData.source?.includes("initial snapshot")
+                    ? "초기 스냅샷입니다. Actions 최초 수집 전에는 실제 곡 제목이 표시되지 않습니다."
+                    : null,
             chartCount: result.chart_count || 0,
             searchCount: 0,
-            updatedAt: chartData.updated_at || result.updated_at || null
+            updatedAt: chartData.updated_at || result.updated_at || null,
+            isInitialSnapshot: chartData.source?.includes("initial snapshot") || false
         };
     }
 
@@ -515,9 +518,15 @@ async function refreshMusic() {
                     ? japanResult.value.updatedAt
                     : null
             : null;
+        const isInitialSnapshot = isStaticChartMode && (
+            (koreaResult.status === "fulfilled" && koreaResult.value.isInitialSnapshot) ||
+            (japanResult.status === "fulfilled" && japanResult.value.isInitialSnapshot)
+        );
         const statusParts = [
             ...(isStaticChartMode
-                ? [`마지막 차트 변경 반영: ${staticUpdate ? formatDateTime(staticUpdate) : "기록 없음"}`]
+                ? [isInitialSnapshot
+                    ? "초기 스냅샷 · GitHub Actions 최초 수집 전"
+                    : `마지막 차트 변경 반영: ${staticUpdate ? formatDateTime(staticUpdate) : "기록 없음"}`]
                 : [`마지막 조회: ${now.toLocaleString("ko-KR")}`]),
             `K-POP ${koreaSuccess ? kpopTracks.length + "곡" : "수집 실패"}`,
             `J-POP ${japanSuccess ? jpopTracks.length + "곡" : "수집 실패"}`
