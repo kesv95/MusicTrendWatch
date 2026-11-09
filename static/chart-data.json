@@ -1,5 +1,5 @@
 {
-  "source": "Bootstrap snapshot · waiting for GitHub Actions first fetch",
+  "source": "YouTube Data API v3",
   "updated_at": "2026-11-09T02:07:41.386474+00:00",
   "countries": {
     "korea": {
@@ -518,7 +518,11 @@
           "rank_difference": null,
           "view_difference": null
         }
-      ]
+      ],
+      "error": {
+        "type": "CONFIGURATION_ERROR",
+        "message": "GitHub Actions secret YOUTUBE_API_KEY가 설정되지 않았습니다."
+      }
     },
     "japan": {
       "country": "japan",
@@ -1036,7 +1040,11 @@
           "rank_difference": null,
           "view_difference": null
         }
-      ]
+      ],
+      "error": {
+        "type": "CONFIGURATION_ERROR",
+        "message": "GitHub Actions secret YOUTUBE_API_KEY가 설정되지 않았습니다."
+      }
     }
   }
 }
