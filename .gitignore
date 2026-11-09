@@ -8,11 +8,26 @@
 venv/
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local logs and operating system files
+*.log
+.DS_Store
+Thumbs.db
 
 # Local database files
 database/*.db
 database/*.sqlite
 database/*.sqlite3
+database/*.db-*
+database/*.sqlite-*
 
 # IDE settings and local data source configuration
 .idea/
