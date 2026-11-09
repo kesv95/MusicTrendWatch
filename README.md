@@ -1,16 +1,19 @@
 # Music Trend Watch
 
-K-POP/J-POP 음악 트렌드를 보여주는 Flask 앱입니다. `index.html`과 정적 파일은 GitHub Pages에서도 배포할 수 있지만, Pages는 Flask 서버를 실행하지 않으므로 API 기능에는 별도 백엔드가 필요합니다.
+YouTube Data API v3에서 한국과 일본의 음악 카테고리 인기 영상 차트를 수집해 K-POP/J-POP 상위 30개와 순위·조회수 변화를 보여줍니다.
 
-## GitHub Pages와 백엔드 연결
+## GitHub Pages 동적 차트 설정
 
-1. Flask 앱을 HTTPS를 지원하는 서버에 배포하고 `YOUTUBE_API_KEY` 환경 변수를 설정합니다. API 키는 프런트엔드나 GitHub 저장소에 넣지 마세요.
-2. 백엔드의 `CORS_ALLOWED_ORIGINS` 환경 변수에 Pages 사이트의 **origin**을 설정합니다. 예: `https://<사용자명>.github.io` (저장소 경로는 포함하지 않습니다.)
-3. `index.html`의 `music-api-base` 메타 태그 `content`에 백엔드 기본 주소를 입력합니다. 예: `content="https://<백엔드-주소>"` (끝의 `/`는 생략합니다.)
-4. GitHub Pages의 배포 소스를 프로젝트 루트로 설정하고 `index.html`, `static/` 폴더를 배포합니다.
+GitHub Pages는 Flask 서버를 실행하지 않으므로 GitHub Actions가 15분마다 API를 호출하고 `static/chart-data.json`을 갱신합니다. Pages는 이 파일을 읽어 차트를 표시합니다. 예약 실행은 GitHub 상황에 따라 늦어질 수 있습니다.
 
-백엔드 주소가 비어 있으면 `localhost`에서 Flask와 같은 출처로 동작합니다. 배포된 정적 사이트에서 주소가 비어 있으면 페이지에 설정 안내가 표시됩니다.
+1. Google Cloud Console에서 YouTube Data API v3를 활성화하고 API 키를 만듭니다. 가능하면 키를 YouTube Data API v3로 제한합니다.
+2. GitHub 저장소의 **Settings → Secrets and variables → Actions**에서 `YOUTUBE_API_KEY` 이름으로 API 키를 저장합니다. 키를 소스 파일이나 프런트엔드 HTML/JS에 넣지 마세요.
+3. 저장소의 **Settings → Actions → General → Workflow permissions**에서 **Read and write permissions**를 허용합니다.
+4. **Actions → Refresh K-POP and J-POP charts → Run workflow**로 첫 수집을 시작합니다. 이후 15분 cron으로 자동 갱신됩니다.
+5. GitHub Pages 배포 소스를 기본 브랜치의 루트로 설정합니다. 차트 데이터 커밋이 올라오면 Pages가 다시 배포합니다.
+
+수집 실패 시 Actions가 실패 유형을 `chart-data.json`에 기록하고 직전 정상 차트 값과 수집 시각을 유지합니다. 화면에는 오류 유형/메시지와 마지막 정상 차트가 표시됩니다. 변동 비교는 직전 수집값과 비교하며, 최초 수집 영상은 `NEW`로 표시합니다.
 
 ## 로컬 실행
 
-프로젝트 루트에서 가상환경을 활성화한 뒤 의존성을 설치하고 `.env`에 `YOUTUBE_API_KEY`를 설정하세요. 실행 명령은 `python music_api.py`입니다.
+로컬 Flask 앱은 `.env`의 `YOUTUBE_API_KEY`를 사용합니다. 의존성을 설치한 뒤 `python music_api.py`로 실행하세요. GitHub Pages 경로의 주기 수집은 Actions workflow가 담당합니다.

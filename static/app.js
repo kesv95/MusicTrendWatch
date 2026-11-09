@@ -16,16 +16,17 @@ const refreshButton = document.getElementById("refresh-button");
 const configuredApiBase = document
     .querySelector('meta[name="music-api-base"]')
     ?.content.trim().replace(/\/+$/, "") || "";
+const isLocalServer = ["localhost", "127.0.0.1", "::1"].includes(
+    window.location.hostname
+);
+const isStaticChartMode = !configuredApiBase && !isLocalServer;
 
 function apiUrl(path) {
     if (configuredApiBase) return `${configuredApiBase}${path}`;
 
-    const host = window.location.hostname;
-    const isLocalServer = ["localhost", "127.0.0.1", "::1"].includes(host);
-    if (!isLocalServer) {
+    if (isStaticChartMode) {
         throw new Error(
-            "GitHub Pages에는 Flask API가 없습니다. index.html의 " +
-            "music-api-base에 배포한 백엔드 주소를 설정해 주세요."
+            "정적 차트 모드에서는 Flask API를 호출할 수 없습니다."
         );
     }
 
@@ -37,7 +38,7 @@ function apiUrl(path) {
 // =========================================
 
 // 페이지가 열려 있는 동안 1시간마다 갱신
-const REFRESH_INTERVAL = 60 * 60 * 1000;
+const REFRESH_INTERVAL = 15 * 60 * 1000;
 const DISPLAY_LIMIT = 30;
 
 let isRefreshing = false;
@@ -57,6 +58,12 @@ function formatDate(dateString) {
     if (Number.isNaN(date.getTime())) return "날짜 정보 없음";
 
     return date.toLocaleDateString("ko-KR");
+}
+
+function formatDateTime(dateString) {
+    const date = new Date(dateString);
+    if (Number.isNaN(date.getTime())) return dateString || "시간 정보 없음";
+    return date.toLocaleString("ko-KR", { timeZone: "Asia/Seoul" });
 }
 
 function formatRankChange(track) {
@@ -230,6 +237,33 @@ function renderChart(container, tracks, countElement) {
 // =========================================
 
 async function fetchCountry(country) {
+    if (isStaticChartMode) {
+        const response = await fetch("static/chart-data.json", {
+            cache: "no-store"
+        });
+        if (!response.ok) {
+            throw new Error(`최신 차트 파일을 불러오지 못했습니다 (${response.status})`);
+        }
+
+        const chartData = await response.json();
+        const result = chartData.countries?.[country];
+        if (!result) throw new Error("해당 국가의 차트 데이터가 없습니다.");
+
+        return {
+            tracks: (result.data || []).map(track => ({
+                ...track,
+                sourceCountry: country
+            })),
+            warning: result.error
+                ? `${result.error.type}: ${result.error.message} · ` +
+                  `마지막 정상 수집 ${result.updated_at ? formatDateTime(result.updated_at) : "기록 없음"}`
+                : null,
+            chartCount: result.chart_count || 0,
+            searchCount: 0,
+            updatedAt: chartData.updated_at || result.updated_at || null
+        };
+    }
+
     const response = await fetch(apiUrl(`/api/music/${country}`));
 
     let result;
@@ -406,7 +440,7 @@ async function refreshMusic() {
             kpopTracks = mergeAndSortTracks(result.tracks);
 
             if (result.warning) {
-                warnings.push(`한국 검색: ${result.warning}`);
+                warnings.push(`${isStaticChartMode ? "한국 차트 수집" : "한국 검색"}: ${result.warning}`);
             }
         } else {
             errors.push(`한국: ${koreaResult.reason.message}`);
@@ -424,7 +458,7 @@ async function refreshMusic() {
             jpopTracks = mergeAndSortTracks(result.tracks);
 
             if (result.warning) {
-                warnings.push(`일본 검색: ${result.warning}`);
+                warnings.push(`${isStaticChartMode ? "일본 차트 수집" : "일본 검색"}: ${result.warning}`);
             }
         } else {
             errors.push(`일본: ${japanResult.reason.message}`);
@@ -437,7 +471,7 @@ async function refreshMusic() {
         // 순위 기록은 국가별로 독립 저장
         const snapshotTasks = [];
 
-        if (koreaSuccess) {
+        if (!isStaticChartMode && koreaSuccess) {
             snapshotTasks.push(
                 saveChartSnapshot("kpop", kpopTracks)
                     .then(changes => {
@@ -450,7 +484,7 @@ async function refreshMusic() {
             );
         }
 
-        if (japanSuccess) {
+        if (!isStaticChartMode && japanSuccess) {
             snapshotTasks.push(
                 saveChartSnapshot("jpop", jpopTracks)
                     .then(changes => {
@@ -474,8 +508,17 @@ async function refreshMusic() {
         }
 
         const now = new Date();
+        const staticUpdate = isStaticChartMode
+            ? koreaResult.status === "fulfilled"
+                ? koreaResult.value.updatedAt
+                : japanResult.status === "fulfilled"
+                    ? japanResult.value.updatedAt
+                    : null
+            : null;
         const statusParts = [
-            `마지막 조회: ${now.toLocaleString("ko-KR")}`,
+            ...(isStaticChartMode
+                ? [`마지막 차트 변경 반영: ${staticUpdate ? formatDateTime(staticUpdate) : "기록 없음"}`]
+                : [`마지막 조회: ${now.toLocaleString("ko-KR")}`]),
             `K-POP ${koreaSuccess ? kpopTracks.length + "곡" : "수집 실패"}`,
             `J-POP ${japanSuccess ? jpopTracks.length + "곡" : "수집 실패"}`
         ];
