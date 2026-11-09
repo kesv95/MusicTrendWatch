@@ -8,11 +8,12 @@ import requests
 from flask import Flask, jsonify, render_template, request
 from dotenv import load_dotenv
 
-load_dotenv()
-
-app = Flask(__name__)
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
+
+# index.html은 프로젝트 루트에 두고, 정적 파일은 기본 static/ 경로에서 제공한다.
+app = Flask(__name__, template_folder=BASE_DIR)
+
 DB_PATH = os.path.join(BASE_DIR, "database", "music.db")
 
 API_KEY = os.getenv("YOUTUBE_API_KEY")
