@@ -1,6 +1,6 @@
 {
   "source": "YouTube Data API v3",
-  "updated_at": "2026-11-21T23:15:25+00:00",
+  "updated_at": "2026-11-22T03:19:27+00:00",
   "countries": {
     "korea": {
       "country": "korea",
@@ -17,12 +17,12 @@
           "channel": "BIGBANG - Topic",
           "thumbnail": "https://i.ytimg.com/vi/IQI2qaqHFlg/mqdefault.jpg",
           "published_at": "2026-11-20T05:02:15Z",
-          "view_count": 2329164,
+          "view_count": 2420674,
           "url": "https://www.youtube.com/watch?v=IQI2qaqHFlg",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 82856
+          "view_difference": 91510
         },
         {
           "rank": 2,
@@ -34,12 +34,12 @@
           "channel": "SOMEDAY - Topic",
           "thumbnail": "https://i.ytimg.com/vi/LOLXD85SThc/mqdefault.jpg",
           "published_at": "2026-11-17T09:04:44Z",
-          "view_count": 707873,
+          "view_count": 737752,
           "url": "https://www.youtube.com/watch?v=LOLXD85SThc",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 14870
+          "view_difference": 29879
         },
         {
           "rank": 3,
@@ -51,12 +51,12 @@
           "channel": "Crush",
           "thumbnail": "https://i.ytimg.com/vi/v_71o1VU28o/mqdefault.jpg",
           "published_at": "2026-11-11T12:26:46Z",
-          "view_count": 6399596,
+          "view_count": 6416262,
           "url": "https://www.youtube.com/watch?v=v_71o1VU28o",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 17407
+          "view_difference": 16666
         },
         {
           "rank": 4,
@@ -68,12 +68,12 @@
           "channel": "RESCENE - Topic",
           "thumbnail": "https://i.ytimg.com/vi/rodFpxo7wkE/mqdefault.jpg",
           "published_at": "2026-11-03T09:05:03Z",
-          "view_count": 10226311,
+          "view_count": 10265373,
           "url": "https://www.youtube.com/watch?v=rodFpxo7wkE",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 15635
+          "view_difference": 39062
         },
         {
           "rank": 5,
@@ -85,12 +85,12 @@
           "channel": "YENA - Topic",
           "thumbnail": "https://i.ytimg.com/vi/6POlUfjBIB4/mqdefault.jpg",
           "published_at": "2026-11-17T09:01:35Z",
-          "view_count": 813979,
+          "view_count": 839106,
           "url": "https://www.youtube.com/watch?v=6POlUfjBIB4",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 11821
+          "view_difference": 25127
         },
         {
           "rank": 6,
@@ -102,12 +102,12 @@
           "channel": "RESCENE - Topic",
           "thumbnail": "https://i.ytimg.com/vi/nrBsmCzbE0U/mqdefault.jpg",
           "published_at": "2026-11-03T09:02:53Z",
-          "view_count": 7098464,
+          "view_count": 7128543,
           "url": "https://www.youtube.com/watch?v=nrBsmCzbE0U",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 13068
+          "view_difference": 30079
         },
         {
           "rank": 7,
@@ -119,12 +119,12 @@
           "channel": "D.O. - Topic",
           "thumbnail": "https://i.ytimg.com/vi/fV4uM0b3vmE/mqdefault.jpg",
           "published_at": "2026-11-11T09:01:23Z",
-          "view_count": 1350455,
+          "view_count": 1359764,
           "url": "https://www.youtube.com/watch?v=fV4uM0b3vmE",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 5136
+          "view_difference": 9309
         },
         {
           "rank": 8,
@@ -136,12 +136,12 @@
           "channel": "TOMORROW BY TOGETHER - Topic",
           "thumbnail": "https://i.ytimg.com/vi/5JkTq9rOYI8/mqdefault.jpg",
           "published_at": "2026-11-16T09:00:40Z",
-          "view_count": 1208213,
+          "view_count": 1233329,
           "url": "https://www.youtube.com/watch?v=5JkTq9rOYI8",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 25837
+          "view_difference": 25116
         },
         {
           "rank": 9,
@@ -153,12 +153,12 @@
           "channel": "Private Story - Topic",
           "thumbnail": "https://i.ytimg.com/vi/XKYp0bYquv4/mqdefault.jpg",
           "published_at": "2026-11-18T03:01:56Z",
-          "view_count": 447932,
+          "view_count": 483155,
           "url": "https://www.youtube.com/watch?v=XKYp0bYquv4",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 20564
+          "view_difference": 35223
         },
         {
           "rank": 10,
@@ -170,33 +170,16 @@
           "channel": "RYU MIN HEE - Topic",
           "thumbnail": "https://i.ytimg.com/vi/W8sPP1khub8/mqdefault.jpg",
           "published_at": "2026-11-15T09:00:30Z",
-          "view_count": 413890,
+          "view_count": 421150,
           "url": "https://www.youtube.com/watch?v=W8sPP1khub8",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 4164
+          "view_difference": 7260
         },
         {
           "rank": 11,
           "original_rank": 11,
-          "source_type": "chart",
-          "video_id": "E4iZhAJMf-A",
-          "title": "Turning to You",
-          "artist": "Jeong Dong Won - Topic",
-          "channel": "Jeong Dong Won - Topic",
-          "thumbnail": "https://i.ytimg.com/vi/E4iZhAJMf-A/mqdefault.jpg",
-          "published_at": "2026-11-14T03:02:29Z",
-          "view_count": 835341,
-          "url": "https://www.youtube.com/watch?v=E4iZhAJMf-A",
-          "rank_status": "SAME",
-          "rank_difference": 0,
-          "view_status": "UP",
-          "view_difference": 2220
-        },
-        {
-          "rank": 12,
-          "original_rank": 12,
           "source_type": "chart",
           "video_id": "peGBibgqNvc",
           "title": "It's You",
@@ -204,12 +187,29 @@
           "channel": "JI JIN SEOK - Topic",
           "thumbnail": "https://i.ytimg.com/vi/peGBibgqNvc/mqdefault.jpg",
           "published_at": "2026-11-17T03:01:50Z",
-          "view_count": 185195,
+          "view_count": 188921,
           "url": "https://www.youtube.com/watch?v=peGBibgqNvc",
           "rank_status": "UP",
           "rank_difference": 1,
           "view_status": "UP",
-          "view_difference": 3218
+          "view_difference": 3726
+        },
+        {
+          "rank": 12,
+          "original_rank": 12,
+          "source_type": "chart",
+          "video_id": "E4iZhAJMf-A",
+          "title": "Turning to You",
+          "artist": "Jeong Dong Won - Topic",
+          "channel": "Jeong Dong Won - Topic",
+          "thumbnail": "https://i.ytimg.com/vi/E4iZhAJMf-A/mqdefault.jpg",
+          "published_at": "2026-11-14T03:02:29Z",
+          "view_count": 838019,
+          "url": "https://www.youtube.com/watch?v=E4iZhAJMf-A",
+          "rank_status": "DOWN",
+          "rank_difference": -1,
+          "view_status": "UP",
+          "view_difference": 2678
         },
         {
           "rank": 13,
@@ -221,12 +221,12 @@
           "channel": "RESCENE - Topic",
           "thumbnail": "https://i.ytimg.com/vi/V_kzqTam8lQ/mqdefault.jpg",
           "published_at": "2026-11-03T09:01:38Z",
-          "view_count": 4248777,
+          "view_count": 4258050,
           "url": "https://www.youtube.com/watch?v=V_kzqTam8lQ",
-          "rank_status": "DOWN",
-          "rank_difference": -1,
+          "rank_status": "SAME",
+          "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 5324
+          "view_difference": 9273
         },
         {
           "rank": 14,
@@ -238,12 +238,12 @@
           "channel": "Choi Chunghyeon - Topic",
           "thumbnail": "https://i.ytimg.com/vi/ulSPnhAilz8/mqdefault.jpg",
           "published_at": "2026-11-14T09:01:32Z",
-          "view_count": 430514,
+          "view_count": 434131,
           "url": "https://www.youtube.com/watch?v=ulSPnhAilz8",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 3216
+          "view_difference": 3617
         },
         {
           "rank": 15,
@@ -255,33 +255,16 @@
           "channel": "LEE MU JIN - Topic",
           "thumbnail": "https://i.ytimg.com/vi/g9S18fcpNSQ/mqdefault.jpg",
           "published_at": "2026-11-09T09:04:24Z",
-          "view_count": 1020011,
+          "view_count": 1025756,
           "url": "https://www.youtube.com/watch?v=g9S18fcpNSQ",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 2334
+          "view_difference": 5745
         },
         {
           "rank": 16,
           "original_rank": 16,
-          "source_type": "chart",
-          "video_id": "FVnDxtfJrIU",
-          "title": "saudade",
-          "artist": "LUCY - Topic",
-          "channel": "LUCY - Topic",
-          "thumbnail": "https://i.ytimg.com/vi/FVnDxtfJrIU/mqdefault.jpg",
-          "published_at": "2026-11-12T09:00:05Z",
-          "view_count": 542986,
-          "url": "https://www.youtube.com/watch?v=FVnDxtfJrIU",
-          "rank_status": "SAME",
-          "rank_difference": 0,
-          "view_status": "UP",
-          "view_difference": 1857
-        },
-        {
-          "rank": 17,
-          "original_rank": 17,
           "source_type": "chart",
           "video_id": "FVNI7zBuk-4",
           "title": "베스티(BESTie) - 연애의 조건(Love Options) | Suit Dance | 수트댄스 | Performance | 4K",
@@ -289,33 +272,33 @@
           "channel": "1theK Originals - 원더케이 오리지널",
           "thumbnail": "https://i.ytimg.com/vi/FVNI7zBuk-4/mqdefault.jpg",
           "published_at": "2026-11-20T09:00:15Z",
-          "view_count": 1362646,
+          "view_count": 1419430,
           "url": "https://www.youtube.com/watch?v=FVNI7zBuk-4",
-          "rank_status": "SAME",
-          "rank_difference": 0,
+          "rank_status": "UP",
+          "rank_difference": 1,
           "view_status": "UP",
-          "view_difference": 72553
+          "view_difference": 56784
+        },
+        {
+          "rank": 17,
+          "original_rank": 17,
+          "source_type": "chart",
+          "video_id": "FVnDxtfJrIU",
+          "title": "saudade",
+          "artist": "LUCY - Topic",
+          "channel": "LUCY - Topic",
+          "thumbnail": "https://i.ytimg.com/vi/FVnDxtfJrIU/mqdefault.jpg",
+          "published_at": "2026-11-12T09:00:05Z",
+          "view_count": 546656,
+          "url": "https://www.youtube.com/watch?v=FVnDxtfJrIU",
+          "rank_status": "DOWN",
+          "rank_difference": -1,
+          "view_status": "UP",
+          "view_difference": 3670
         },
         {
           "rank": 18,
           "original_rank": 18,
-          "source_type": "chart",
-          "video_id": "KYGb4thFNqk",
-          "title": "UP",
-          "artist": "ATEEZ - Topic",
-          "channel": "ATEEZ - Topic",
-          "thumbnail": "https://i.ytimg.com/vi/KYGb4thFNqk/mqdefault.jpg",
-          "published_at": "2026-11-13T05:00:27Z",
-          "view_count": 1072029,
-          "url": "https://www.youtube.com/watch?v=KYGb4thFNqk",
-          "rank_status": "SAME",
-          "rank_difference": 0,
-          "view_status": "UP",
-          "view_difference": 10899
-        },
-        {
-          "rank": 19,
-          "original_rank": 19,
           "source_type": "chart",
           "video_id": "sSZsC-fEmYE",
           "title": "Goodbye to Us",
@@ -323,12 +306,29 @@
           "channel": "Huh Gak - Topic",
           "thumbnail": "https://i.ytimg.com/vi/sSZsC-fEmYE/mqdefault.jpg",
           "published_at": "2026-11-18T09:01:10Z",
-          "view_count": 114623,
+          "view_count": 118644,
           "url": "https://www.youtube.com/watch?v=sSZsC-fEmYE",
           "rank_status": "UP",
           "rank_difference": 1,
           "view_status": "UP",
-          "view_difference": 2170
+          "view_difference": 4021
+        },
+        {
+          "rank": 19,
+          "original_rank": 19,
+          "source_type": "chart",
+          "video_id": "KYGb4thFNqk",
+          "title": "UP",
+          "artist": "ATEEZ - Topic",
+          "channel": "ATEEZ - Topic",
+          "thumbnail": "https://i.ytimg.com/vi/KYGb4thFNqk/mqdefault.jpg",
+          "published_at": "2026-11-13T05:00:27Z",
+          "view_count": 1082512,
+          "url": "https://www.youtube.com/watch?v=KYGb4thFNqk",
+          "rank_status": "DOWN",
+          "rank_difference": -1,
+          "view_status": "UP",
+          "view_difference": 10483
         },
         {
           "rank": 20,
@@ -340,12 +340,12 @@
           "channel": "dahee - Topic",
           "thumbnail": "https://i.ytimg.com/vi/sZ6m0mFDQg8/mqdefault.jpg",
           "published_at": "2026-11-15T03:02:24Z",
-          "view_count": 269152,
+          "view_count": 272461,
           "url": "https://www.youtube.com/watch?v=sZ6m0mFDQg8",
-          "rank_status": "DOWN",
-          "rank_difference": -1,
+          "rank_status": "SAME",
+          "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 2447
+          "view_difference": 3309
         },
         {
           "rank": 21,
@@ -357,12 +357,12 @@
           "channel": "YOON JI HWAN - Topic",
           "thumbnail": "https://i.ytimg.com/vi/WucAJaLD0wM/mqdefault.jpg",
           "published_at": "2026-11-16T09:04:29Z",
-          "view_count": 170672,
+          "view_count": 175016,
           "url": "https://www.youtube.com/watch?v=WucAJaLD0wM",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 2654
+          "view_difference": 4344
         },
         {
           "rank": 22,
@@ -374,12 +374,12 @@
           "channel": "TOMORROW BY TOGETHER - Topic",
           "thumbnail": "https://i.ytimg.com/vi/gledHxEf--E/mqdefault.jpg",
           "published_at": "2026-11-16T09:00:16Z",
-          "view_count": 1139908,
+          "view_count": 1157094,
           "url": "https://www.youtube.com/watch?v=gledHxEf--E",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 21783
+          "view_difference": 17186
         },
         {
           "rank": 23,
@@ -391,12 +391,12 @@
           "channel": "ILLIT - Topic",
           "thumbnail": "https://i.ytimg.com/vi/qsqvJpOgrWw/mqdefault.jpg",
           "published_at": "2026-10-26T09:00:33Z",
-          "view_count": 19500679,
+          "view_count": 19607350,
           "url": "https://www.youtube.com/watch?v=qsqvJpOgrWw",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 100117
+          "view_difference": 106671
         },
         {
           "rank": 24,
@@ -408,12 +408,12 @@
           "channel": "NCT DREAM - Topic",
           "thumbnail": "https://i.ytimg.com/vi/MWXbns4FV0s/mqdefault.jpg",
           "published_at": "2026-11-09T09:01:54Z",
-          "view_count": 1279853,
+          "view_count": 1292345,
           "url": "https://www.youtube.com/watch?v=MWXbns4FV0s",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 7938
+          "view_difference": 12492
         },
         {
           "rank": 25,
@@ -425,12 +425,12 @@
           "channel": "래원",
           "thumbnail": "https://i.ytimg.com/vi/1EsCgszzTb4/mqdefault.jpg",
           "published_at": "2026-11-17T09:00:27Z",
-          "view_count": 726365,
+          "view_count": 729670,
           "url": "https://www.youtube.com/watch?v=1EsCgszzTb4",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 4654
+          "view_difference": 3305
         },
         {
           "rank": 26,
@@ -442,12 +442,12 @@
           "channel": "freestyle - Topic",
           "thumbnail": "https://i.ytimg.com/vi/ySqIbMA30C4/mqdefault.jpg",
           "published_at": "2026-11-13T02:55:51Z",
-          "view_count": 182995,
+          "view_count": 185493,
           "url": "https://www.youtube.com/watch?v=ySqIbMA30C4",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 1095
+          "view_difference": 2498
         },
         {
           "rank": 27,
@@ -459,12 +459,12 @@
           "channel": "LUCY - Topic",
           "thumbnail": "https://i.ytimg.com/vi/ZBeU62LO5lo/mqdefault.jpg",
           "published_at": "2026-11-12T09:00:37Z",
-          "view_count": 431486,
+          "view_count": 433436,
           "url": "https://www.youtube.com/watch?v=ZBeU62LO5lo",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 1009
+          "view_difference": 1950
         },
         {
           "rank": 28,
@@ -476,12 +476,12 @@
           "channel": "정승환 Jung Seung Hwan",
           "thumbnail": "https://i.ytimg.com/vi/PlhFFgHmlbs/mqdefault.jpg",
           "published_at": "2026-11-13T09:00:08Z",
-          "view_count": 950802,
+          "view_count": 953202,
           "url": "https://www.youtube.com/watch?v=PlhFFgHmlbs",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 3217
+          "view_difference": 2400
         },
         {
           "rank": 29,
@@ -493,12 +493,12 @@
           "channel": "A2O - Topic",
           "thumbnail": "https://i.ytimg.com/vi/Xm2c0L-Xgdg/mqdefault.jpg",
           "published_at": "2026-11-09T09:00:25Z",
-          "view_count": 1557941,
+          "view_count": 1569330,
           "url": "https://www.youtube.com/watch?v=Xm2c0L-Xgdg",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 10993
+          "view_difference": 11389
         },
         {
           "rank": 30,
@@ -510,15 +510,15 @@
           "channel": "TOMORROW BY TOGETHER - Topic",
           "thumbnail": "https://i.ytimg.com/vi/I0AMsYdb4lI/mqdefault.jpg",
           "published_at": "2026-11-16T09:00:03Z",
-          "view_count": 728118,
+          "view_count": 742169,
           "url": "https://www.youtube.com/watch?v=I0AMsYdb4lI",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 17035
+          "view_difference": 14051
         }
       ],
-      "updated_at": "2026-11-21T23:15:25+00:00"
+      "updated_at": "2026-11-22T03:19:27+00:00"
     },
     "japan": {
       "country": "japan",
@@ -535,12 +535,12 @@
           "channel": "初星学園",
           "thumbnail": "https://i.ytimg.com/vi/Y_I_NOHVwzI/mqdefault.jpg",
           "published_at": "2026-11-16T13:00:11Z",
-          "view_count": 2770502,
+          "view_count": 2820704,
           "url": "https://www.youtube.com/watch?v=Y_I_NOHVwzI",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 48829
+          "view_difference": 50202
         },
         {
           "rank": 2,
@@ -552,29 +552,29 @@
           "channel": "HYBE LABELS",
           "thumbnail": "https://i.ytimg.com/vi/M9G4guYg-i8/mqdefault.jpg",
           "published_at": "2026-11-16T08:58:08Z",
-          "view_count": 26520553,
+          "view_count": 27311246,
           "url": "https://www.youtube.com/watch?v=M9G4guYg-i8",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 337502
+          "view_difference": 790693
         },
         {
           "rank": 3,
           "original_rank": 3,
           "source_type": "chart",
-          "video_id": "qmcTFkYJTTI",
-          "title": "ZORN / STAR feat. アイナ・ジ・エンド, AKLO",
-          "artist": "ZORN Official",
-          "channel": "ZORN Official",
-          "thumbnail": "https://i.ytimg.com/vi/qmcTFkYJTTI/mqdefault.jpg",
-          "published_at": "2026-11-13T11:59:53Z",
-          "view_count": 3723682,
-          "url": "https://www.youtube.com/watch?v=qmcTFkYJTTI",
-          "rank_status": "SAME",
-          "rank_difference": 0,
+          "video_id": "xpRB5Huqe9Y",
+          "title": "Alan Walker & Raul (ラウール) - YUME (Official Music Video)",
+          "artist": "Alan Walker",
+          "channel": "Alan Walker",
+          "thumbnail": "https://i.ytimg.com/vi/xpRB5Huqe9Y/mqdefault.jpg",
+          "published_at": "2026-11-20T13:00:06Z",
+          "view_count": 813244,
+          "url": "https://www.youtube.com/watch?v=xpRB5Huqe9Y",
+          "rank_status": "UP",
+          "rank_difference": 2,
           "view_status": "UP",
-          "view_difference": 47916
+          "view_difference": 45142
         },
         {
           "rank": 4,
@@ -586,29 +586,29 @@
           "channel": "XG",
           "thumbnail": "https://i.ytimg.com/vi/_B0QvdeXjdE/mqdefault.jpg",
           "published_at": "2026-11-17T02:00:39Z",
-          "view_count": 2492911,
+          "view_count": 2537717,
           "url": "https://www.youtube.com/watch?v=_B0QvdeXjdE",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 47367
+          "view_difference": 44806
         },
         {
           "rank": 5,
           "original_rank": 5,
           "source_type": "chart",
-          "video_id": "xpRB5Huqe9Y",
-          "title": "Alan Walker & Raul (ラウール) - YUME (Official Music Video)",
-          "artist": "Alan Walker",
-          "channel": "Alan Walker",
-          "thumbnail": "https://i.ytimg.com/vi/xpRB5Huqe9Y/mqdefault.jpg",
-          "published_at": "2026-11-20T13:00:06Z",
-          "view_count": 768102,
-          "url": "https://www.youtube.com/watch?v=xpRB5Huqe9Y",
-          "rank_status": "UP",
-          "rank_difference": 1,
+          "video_id": "qmcTFkYJTTI",
+          "title": "ZORN / STAR feat. アイナ・ジ・エンド, AKLO",
+          "artist": "ZORN Official",
+          "channel": "ZORN Official",
+          "thumbnail": "https://i.ytimg.com/vi/qmcTFkYJTTI/mqdefault.jpg",
+          "published_at": "2026-11-13T11:59:53Z",
+          "view_count": 3745483,
+          "url": "https://www.youtube.com/watch?v=qmcTFkYJTTI",
+          "rank_status": "DOWN",
+          "rank_difference": -2,
           "view_status": "UP",
-          "view_difference": 31457
+          "view_difference": 21801
         },
         {
           "rank": 6,
@@ -620,12 +620,12 @@
           "channel": "Juice=Juice",
           "thumbnail": "https://i.ytimg.com/vi/mliE57khf_g/mqdefault.jpg",
           "published_at": "2026-11-17T12:00:11Z",
-          "view_count": 894386,
+          "view_count": 908765,
           "url": "https://www.youtube.com/watch?v=mliE57khf_g",
-          "rank_status": "DOWN",
-          "rank_difference": -1,
+          "rank_status": "SAME",
+          "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 7213
+          "view_difference": 14379
         },
         {
           "rank": 7,
@@ -637,12 +637,12 @@
           "channel": "THE FIRST TAKE",
           "thumbnail": "https://i.ytimg.com/vi/5UJ8EosJpCA/mqdefault.jpg",
           "published_at": "2026-11-13T13:00:06Z",
-          "view_count": 2524478,
+          "view_count": 2541802,
           "url": "https://www.youtube.com/watch?v=5UJ8EosJpCA",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 8454
+          "view_difference": 17324
         },
         {
           "rank": 8,
@@ -654,12 +654,12 @@
           "channel": "STARGLOW Official",
           "thumbnail": "https://i.ytimg.com/vi/pEn9DmzsQJw/mqdefault.jpg",
           "published_at": "2026-11-16T12:00:06Z",
-          "view_count": 1723495,
+          "view_count": 1786555,
           "url": "https://www.youtube.com/watch?v=pEn9DmzsQJw",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 17764
+          "view_difference": 63060
         },
         {
           "rank": 9,
@@ -671,67 +671,16 @@
           "channel": "HANA official",
           "thumbnail": "https://i.ytimg.com/vi/VFIxQK1TjOE/mqdefault.jpg",
           "published_at": "2026-11-20T13:00:03Z",
-          "view_count": 884753,
+          "view_count": 923838,
           "url": "https://www.youtube.com/watch?v=VFIxQK1TjOE",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 21474
+          "view_difference": 39085
         },
         {
           "rank": 10,
           "original_rank": 10,
-          "source_type": "chart",
-          "video_id": "OBgqMAF09mg",
-          "title": "M!LK - しおざきわんだーらんど（from ROCK IN JAPAN FES.2026）",
-          "artist": "M!LK",
-          "channel": "M!LK",
-          "thumbnail": "https://i.ytimg.com/vi/OBgqMAF09mg/mqdefault.jpg",
-          "published_at": "2026-11-08T09:00:07Z",
-          "view_count": 2574792,
-          "url": "https://www.youtube.com/watch?v=OBgqMAF09mg",
-          "rank_status": "SAME",
-          "rank_difference": 0,
-          "view_status": "UP",
-          "view_difference": 4881
-        },
-        {
-          "rank": 11,
-          "original_rank": 11,
-          "source_type": "chart",
-          "video_id": "Gq_IGTJ-AMw",
-          "title": "ちゃんみな - History (Official Music Video)",
-          "artist": "ちゃんみな [CHANMINA]",
-          "channel": "ちゃんみな [CHANMINA]",
-          "thumbnail": "https://i.ytimg.com/vi/Gq_IGTJ-AMw/mqdefault.jpg",
-          "published_at": "2026-11-13T10:00:06Z",
-          "view_count": 3103604,
-          "url": "https://www.youtube.com/watch?v=Gq_IGTJ-AMw",
-          "rank_status": "SAME",
-          "rank_difference": 0,
-          "view_status": "UP",
-          "view_difference": 21254
-        },
-        {
-          "rank": 12,
-          "original_rank": 12,
-          "source_type": "chart",
-          "video_id": "PtZcuKJ_UzE",
-          "title": "Travis Japan - 'POP STAR' Music Video",
-          "artist": "Travis Japan",
-          "channel": "Travis Japan",
-          "thumbnail": "https://i.ytimg.com/vi/PtZcuKJ_UzE/mqdefault.jpg",
-          "published_at": "2026-11-17T15:00:11Z",
-          "view_count": 2474187,
-          "url": "https://www.youtube.com/watch?v=PtZcuKJ_UzE",
-          "rank_status": "SAME",
-          "rank_difference": 0,
-          "view_status": "UP",
-          "view_difference": 27504
-        },
-        {
-          "rank": 13,
-          "original_rank": 13,
           "source_type": "chart",
           "video_id": "RjJGRCo5y-I",
           "title": "GiiiRIP",
@@ -739,67 +688,50 @@
           "channel": "BIGBANG - Topic",
           "thumbnail": "https://i.ytimg.com/vi/RjJGRCo5y-I/mqdefault.jpg",
           "published_at": "2026-11-20T05:00:08Z",
-          "view_count": 175357,
+          "view_count": 186440,
           "url": "https://www.youtube.com/watch?v=RjJGRCo5y-I",
-          "rank_status": "SAME",
-          "rank_difference": 0,
+          "rank_status": "UP",
+          "rank_difference": 3,
           "view_status": "UP",
-          "view_difference": 3379
+          "view_difference": 11083
         },
         {
-          "rank": 14,
-          "original_rank": 14,
+          "rank": 11,
+          "original_rank": 11,
           "source_type": "chart",
-          "video_id": "OzhgQxSoljI",
-          "title": "乃木坂46『君ロス』MUSIC VIDEO",
-          "artist": "乃木坂46 OFFICIAL YouTube CHANNEL",
-          "channel": "乃木坂46 OFFICIAL YouTube CHANNEL",
-          "thumbnail": "https://i.ytimg.com/vi/OzhgQxSoljI/mqdefault.jpg",
-          "published_at": "2026-11-10T15:00:09Z",
-          "view_count": 2303935,
-          "url": "https://www.youtube.com/watch?v=OzhgQxSoljI",
-          "rank_status": "SAME",
-          "rank_difference": 0,
+          "video_id": "PtZcuKJ_UzE",
+          "title": "Travis Japan - 'POP STAR' Music Video",
+          "artist": "Travis Japan",
+          "channel": "Travis Japan",
+          "thumbnail": "https://i.ytimg.com/vi/PtZcuKJ_UzE/mqdefault.jpg",
+          "published_at": "2026-11-17T15:00:11Z",
+          "view_count": 2514358,
+          "url": "https://www.youtube.com/watch?v=PtZcuKJ_UzE",
+          "rank_status": "UP",
+          "rank_difference": 1,
           "view_status": "UP",
-          "view_difference": 6964
+          "view_difference": 40171
         },
         {
-          "rank": 15,
-          "original_rank": 15,
+          "rank": 12,
+          "original_rank": 12,
           "source_type": "chart",
-          "video_id": "7qiOPfB_kCM",
-          "title": "中島健人「超☆HENSHIN」Music Video",
-          "artist": "中島健人 Official YouTube Channel",
-          "channel": "中島健人 Official YouTube Channel",
-          "thumbnail": "https://i.ytimg.com/vi/7qiOPfB_kCM/mqdefault.jpg",
-          "published_at": "2026-11-13T10:30:10Z",
-          "view_count": 4485692,
-          "url": "https://www.youtube.com/watch?v=7qiOPfB_kCM",
-          "rank_status": "SAME",
-          "rank_difference": 0,
+          "video_id": "OBgqMAF09mg",
+          "title": "M!LK - しおざきわんだーらんど（from ROCK IN JAPAN FES.2026）",
+          "artist": "M!LK",
+          "channel": "M!LK",
+          "thumbnail": "https://i.ytimg.com/vi/OBgqMAF09mg/mqdefault.jpg",
+          "published_at": "2026-11-08T09:00:07Z",
+          "view_count": 2591243,
+          "url": "https://www.youtube.com/watch?v=OBgqMAF09mg",
+          "rank_status": "DOWN",
+          "rank_difference": -2,
           "view_status": "UP",
-          "view_difference": 14919
+          "view_difference": 16451
         },
         {
-          "rank": 16,
-          "original_rank": 16,
-          "source_type": "chart",
-          "video_id": "arYdao9QfPk",
-          "title": "『しわあわせ | Vaundy』acoustic cover. 優里 × 花村想太(Da-iCE)",
-          "artist": "優里ちゃんねる【公式】",
-          "channel": "優里ちゃんねる【公式】",
-          "thumbnail": "https://i.ytimg.com/vi/arYdao9QfPk/mqdefault.jpg",
-          "published_at": "2026-11-10T10:00:18Z",
-          "view_count": 2217944,
-          "url": "https://www.youtube.com/watch?v=arYdao9QfPk",
-          "rank_status": "SAME",
-          "rank_difference": 0,
-          "view_status": "UP",
-          "view_difference": 5386
-        },
-        {
-          "rank": 17,
-          "original_rank": 17,
+          "rank": 13,
+          "original_rank": 13,
           "source_type": "chart",
           "video_id": "8JD3qIErHYw",
           "title": "夜と青",
@@ -807,12 +739,80 @@
           "channel": "supercell - Topic",
           "thumbnail": "https://i.ytimg.com/vi/8JD3qIErHYw/mqdefault.jpg",
           "published_at": "2026-11-20T15:00:20Z",
-          "view_count": 295338,
+          "view_count": 329074,
           "url": "https://www.youtube.com/watch?v=8JD3qIErHYw",
-          "rank_status": "SAME",
-          "rank_difference": 0,
+          "rank_status": "UP",
+          "rank_difference": 4,
           "view_status": "UP",
-          "view_difference": 24913
+          "view_difference": 33736
+        },
+        {
+          "rank": 14,
+          "original_rank": 14,
+          "source_type": "chart",
+          "video_id": "Gq_IGTJ-AMw",
+          "title": "ちゃんみな - History (Official Music Video)",
+          "artist": "ちゃんみな [CHANMINA]",
+          "channel": "ちゃんみな [CHANMINA]",
+          "thumbnail": "https://i.ytimg.com/vi/Gq_IGTJ-AMw/mqdefault.jpg",
+          "published_at": "2026-11-13T10:00:06Z",
+          "view_count": 3125921,
+          "url": "https://www.youtube.com/watch?v=Gq_IGTJ-AMw",
+          "rank_status": "DOWN",
+          "rank_difference": -3,
+          "view_status": "UP",
+          "view_difference": 22317
+        },
+        {
+          "rank": 15,
+          "original_rank": 15,
+          "source_type": "chart",
+          "video_id": "OzhgQxSoljI",
+          "title": "乃木坂46『君ロス』MUSIC VIDEO",
+          "artist": "乃木坂46 OFFICIAL YouTube CHANNEL",
+          "channel": "乃木坂46 OFFICIAL YouTube CHANNEL",
+          "thumbnail": "https://i.ytimg.com/vi/OzhgQxSoljI/mqdefault.jpg",
+          "published_at": "2026-11-10T15:00:09Z",
+          "view_count": 2315474,
+          "url": "https://www.youtube.com/watch?v=OzhgQxSoljI",
+          "rank_status": "DOWN",
+          "rank_difference": -1,
+          "view_status": "UP",
+          "view_difference": 11539
+        },
+        {
+          "rank": 16,
+          "original_rank": 16,
+          "source_type": "chart",
+          "video_id": "7qiOPfB_kCM",
+          "title": "中島健人「超☆HENSHIN」Music Video",
+          "artist": "中島健人 Official YouTube Channel",
+          "channel": "中島健人 Official YouTube Channel",
+          "thumbnail": "https://i.ytimg.com/vi/7qiOPfB_kCM/mqdefault.jpg",
+          "published_at": "2026-11-13T10:30:10Z",
+          "view_count": 4513354,
+          "url": "https://www.youtube.com/watch?v=7qiOPfB_kCM",
+          "rank_status": "DOWN",
+          "rank_difference": -1,
+          "view_status": "UP",
+          "view_difference": 27662
+        },
+        {
+          "rank": 17,
+          "original_rank": 17,
+          "source_type": "chart",
+          "video_id": "arYdao9QfPk",
+          "title": "『しわあわせ | Vaundy』acoustic cover. 優里 × 花村想太(Da-iCE)",
+          "artist": "優里ちゃんねる【公式】",
+          "channel": "優里ちゃんねる【公式】",
+          "thumbnail": "https://i.ytimg.com/vi/arYdao9QfPk/mqdefault.jpg",
+          "published_at": "2026-11-10T10:00:18Z",
+          "view_count": 2230535,
+          "url": "https://www.youtube.com/watch?v=arYdao9QfPk",
+          "rank_status": "DOWN",
+          "rank_difference": -1,
+          "view_status": "UP",
+          "view_difference": 12591
         },
         {
           "rank": 18,
@@ -824,33 +824,16 @@
           "channel": "加賀美 ハヤト/Hayato Kagami",
           "thumbnail": "https://i.ytimg.com/vi/750dhj_Eo38/mqdefault.jpg",
           "published_at": "2026-11-19T10:30:11Z",
-          "view_count": 975085,
+          "view_count": 993446,
           "url": "https://www.youtube.com/watch?v=750dhj_Eo38",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 19645
+          "view_difference": 18361
         },
         {
           "rank": 19,
           "original_rank": 19,
-          "source_type": "chart",
-          "video_id": "0JQ9k6kcKVs",
-          "title": "NAYEON “BABY ANGEL” M/V",
-          "artist": "JYP Entertainment",
-          "channel": "JYP Entertainment",
-          "thumbnail": "https://i.ytimg.com/vi/0JQ9k6kcKVs/mqdefault.jpg",
-          "published_at": "2026-11-20T05:00:03Z",
-          "view_count": 6925409,
-          "url": "https://www.youtube.com/watch?v=0JQ9k6kcKVs",
-          "rank_status": "SAME",
-          "rank_difference": 0,
-          "view_status": "UP",
-          "view_difference": 374760
-        },
-        {
-          "rank": 20,
-          "original_rank": 20,
           "source_type": "chart",
           "video_id": "Ppa_wArK900",
           "title": "爆裂愛してる covered by 3SKM【歌ってみた】",
@@ -858,12 +841,29 @@
           "channel": "3SKM",
           "thumbnail": "https://i.ytimg.com/vi/Ppa_wArK900/mqdefault.jpg",
           "published_at": "2026-11-20T11:00:09Z",
-          "view_count": 446166,
+          "view_count": 465082,
           "url": "https://www.youtube.com/watch?v=Ppa_wArK900",
           "rank_status": "UP",
-          "rank_difference": 2,
+          "rank_difference": 1,
           "view_status": "UP",
-          "view_difference": 13553
+          "view_difference": 18916
+        },
+        {
+          "rank": 20,
+          "original_rank": 20,
+          "source_type": "chart",
+          "video_id": "0JQ9k6kcKVs",
+          "title": "NAYEON “BABY ANGEL” M/V",
+          "artist": "JYP Entertainment",
+          "channel": "JYP Entertainment",
+          "thumbnail": "https://i.ytimg.com/vi/0JQ9k6kcKVs/mqdefault.jpg",
+          "published_at": "2026-11-20T05:00:03Z",
+          "view_count": 7746152,
+          "url": "https://www.youtube.com/watch?v=0JQ9k6kcKVs",
+          "rank_status": "DOWN",
+          "rank_difference": -1,
+          "view_status": "UP",
+          "view_difference": 820743
         },
         {
           "rank": 21,
@@ -875,12 +875,12 @@
           "channel": "HYBE LABELS",
           "thumbnail": "https://i.ytimg.com/vi/dE_Ro8Sac2M/mqdefault.jpg",
           "published_at": "2026-11-13T14:57:11Z",
-          "view_count": 22656630,
+          "view_count": 22694228,
           "url": "https://www.youtube.com/watch?v=dE_Ro8Sac2M",
-          "rank_status": "DOWN",
-          "rank_difference": -1,
+          "rank_status": "SAME",
+          "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 47025
+          "view_difference": 37598
         },
         {
           "rank": 22,
@@ -892,12 +892,12 @@
           "channel": "ROF-MAO - Topic",
           "thumbnail": "https://i.ytimg.com/vi/rcdHVdOGhNs/mqdefault.jpg",
           "published_at": "2026-11-15T10:03:36Z",
-          "view_count": 466580,
+          "view_count": 472031,
           "url": "https://www.youtube.com/watch?v=rcdHVdOGhNs",
-          "rank_status": "DOWN",
-          "rank_difference": -1,
+          "rank_status": "SAME",
+          "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 2642
+          "view_difference": 5451
         },
         {
           "rank": 23,
@@ -909,12 +909,12 @@
           "channel": "ふぉ〜ゆ〜ちゅ〜ぶ",
           "thumbnail": "https://i.ytimg.com/vi/Rv_unO1n6U8/mqdefault.jpg",
           "published_at": "2026-11-10T15:00:11Z",
-          "view_count": 1617386,
+          "view_count": 1621210,
           "url": "https://www.youtube.com/watch?v=Rv_unO1n6U8",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 1809
+          "view_difference": 3824
         },
         {
           "rank": 24,
@@ -926,12 +926,12 @@
           "channel": "ONE N' ONLY TV",
           "thumbnail": "https://i.ytimg.com/vi/Q5ldoeGp2RI/mqdefault.jpg",
           "published_at": "2026-11-16T12:00:06Z",
-          "view_count": 412077,
+          "view_count": 418413,
           "url": "https://www.youtube.com/watch?v=Q5ldoeGp2RI",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 2301
+          "view_difference": 6336
         },
         {
           "rank": 25,
@@ -943,12 +943,12 @@
           "channel": "Ado",
           "thumbnail": "https://i.ytimg.com/vi/wodpaLwL7II/mqdefault.jpg",
           "published_at": "2026-11-14T11:00:07Z",
-          "view_count": 3371959,
+          "view_count": 3409183,
           "url": "https://www.youtube.com/watch?v=wodpaLwL7II",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 54214
+          "view_difference": 37224
         },
         {
           "rank": 26,
@@ -960,67 +960,16 @@
           "channel": "BE:FIRST Official",
           "thumbnail": "https://i.ytimg.com/vi/VkX3oC6g3h4/mqdefault.jpg",
           "published_at": "2026-11-10T10:00:21Z",
-          "view_count": 1185847,
+          "view_count": 1194189,
           "url": "https://www.youtube.com/watch?v=VkX3oC6g3h4",
           "rank_status": "SAME",
           "rank_difference": 0,
           "view_status": "UP",
-          "view_difference": 5052
+          "view_difference": 8342
         },
         {
           "rank": 27,
           "original_rank": 27,
-          "source_type": "chart",
-          "video_id": "xCCkZCdxfDA",
-          "title": "KILLA",
-          "artist": "YOASOBI - Topic",
-          "channel": "YOASOBI - Topic",
-          "thumbnail": "https://i.ytimg.com/vi/xCCkZCdxfDA/mqdefault.jpg",
-          "published_at": "2026-11-10T10:00:37Z",
-          "view_count": 1376336,
-          "url": "https://www.youtube.com/watch?v=xCCkZCdxfDA",
-          "rank_status": "SAME",
-          "rank_difference": 0,
-          "view_status": "UP",
-          "view_difference": 6811
-        },
-        {
-          "rank": 28,
-          "original_rank": 28,
-          "source_type": "chart",
-          "video_id": "SGovymtCzvA",
-          "title": "ATEEZ(에이티즈) - 'UP' Official MV",
-          "artist": "KQ ENTERTAINMENT",
-          "channel": "KQ ENTERTAINMENT",
-          "thumbnail": "https://i.ytimg.com/vi/SGovymtCzvA/mqdefault.jpg",
-          "published_at": "2026-11-13T05:00:03Z",
-          "view_count": 34383735,
-          "url": "https://www.youtube.com/watch?v=SGovymtCzvA",
-          "rank_status": "SAME",
-          "rank_difference": 0,
-          "view_status": "UP",
-          "view_difference": 54647
-        },
-        {
-          "rank": 29,
-          "original_rank": 29,
-          "source_type": "chart",
-          "video_id": "dr3oPet8Qgw",
-          "title": "無中に有を生ず",
-          "artist": "HOYO-MiX - Topic",
-          "channel": "HOYO-MiX - Topic",
-          "thumbnail": "https://i.ytimg.com/vi/dr3oPet8Qgw/mqdefault.jpg",
-          "published_at": "2026-11-12T18:34:08Z",
-          "view_count": 607612,
-          "url": "https://www.youtube.com/watch?v=dr3oPet8Qgw",
-          "rank_status": "SAME",
-          "rank_difference": 0,
-          "view_status": "UP",
-          "view_difference": 3997
-        },
-        {
-          "rank": 30,
-          "original_rank": 30,
           "source_type": "chart",
           "video_id": "Ss_Jj35EG18",
           "title": "【歌ってみた】花が落ちたので、/一二三【にじさんじ/緋八マナ】",
@@ -1028,15 +977,66 @@
           "channel": "緋八マナ / Hibachi Mana【にじさんじ】",
           "thumbnail": "https://i.ytimg.com/vi/Ss_Jj35EG18/mqdefault.jpg",
           "published_at": "2026-11-20T15:00:10Z",
-          "view_count": 338091,
+          "view_count": 358123,
           "url": "https://www.youtube.com/watch?v=Ss_Jj35EG18",
+          "rank_status": "UP",
+          "rank_difference": 3,
+          "view_status": "UP",
+          "view_difference": 20032
+        },
+        {
+          "rank": 28,
+          "original_rank": 28,
+          "source_type": "chart",
+          "video_id": "xCCkZCdxfDA",
+          "title": "KILLA",
+          "artist": "YOASOBI - Topic",
+          "channel": "YOASOBI - Topic",
+          "thumbnail": "https://i.ytimg.com/vi/xCCkZCdxfDA/mqdefault.jpg",
+          "published_at": "2026-11-10T10:00:37Z",
+          "view_count": 1385894,
+          "url": "https://www.youtube.com/watch?v=xCCkZCdxfDA",
+          "rank_status": "DOWN",
+          "rank_difference": -1,
+          "view_status": "UP",
+          "view_difference": 9558
+        },
+        {
+          "rank": 29,
+          "original_rank": 29,
+          "source_type": "chart",
+          "video_id": "6ynRlWCdXe8",
+          "title": "やきいもグーチーパー（手遊びうた）【どこでもジャンボリー！】童謡",
+          "artist": "どこでもジャンボリー！",
+          "channel": "どこでもジャンボリー！",
+          "thumbnail": "https://i.ytimg.com/vi/6ynRlWCdXe8/mqdefault.jpg",
+          "published_at": "2026-11-13T08:00:15Z",
+          "view_count": 341087,
+          "url": "https://www.youtube.com/watch?v=6ynRlWCdXe8",
           "rank_status": "NEW",
           "rank_difference": null,
           "view_status": "NEW",
           "view_difference": null
+        },
+        {
+          "rank": 30,
+          "original_rank": 30,
+          "source_type": "chart",
+          "video_id": "SGovymtCzvA",
+          "title": "ATEEZ(에이티즈) - 'UP' Official MV",
+          "artist": "KQ ENTERTAINMENT",
+          "channel": "KQ ENTERTAINMENT",
+          "thumbnail": "https://i.ytimg.com/vi/SGovymtCzvA/mqdefault.jpg",
+          "published_at": "2026-11-13T05:00:03Z",
+          "view_count": 34421747,
+          "url": "https://www.youtube.com/watch?v=SGovymtCzvA",
+          "rank_status": "DOWN",
+          "rank_difference": -2,
+          "view_status": "UP",
+          "view_difference": 38012
         }
       ],
-      "updated_at": "2026-11-21T23:15:25+00:00"
+      "updated_at": "2026-11-22T03:19:27+00:00"
     }
   }
 }
