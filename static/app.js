@@ -13,6 +13,9 @@ const koreaCount = document.getElementById("kpop-count");
 const japanCount = document.getElementById("jpop-count");
 const updateTime = document.getElementById("update-time");
 const refreshButton = document.getElementById("refresh-button");
+const briefingText = document.getElementById("briefing-text");
+const briefingDate = document.getElementById("briefing-date");
+const briefingMode = document.getElementById("briefing-mode");
 const configuredApiBase = document
     .querySelector('meta[name="music-api-base"]')
     ?.content.trim().replace(/\/+$/, "") || "";
@@ -297,6 +300,30 @@ async function fetchCountry(country) {
     };
 }
 
+async function fetchDailyBriefing() {
+    if (!briefingText) return;
+    try {
+        const response = await fetch("static/daily-briefing.json", { cache: "no-store" });
+        if (!response.ok) throw new Error("브리핑 파일이 아직 없습니다.");
+        const briefing = await response.json();
+        briefingText.textContent = briefing.text || "표시할 브리핑이 없습니다.";
+        const comparedTo = briefing.compared_to ? ` · ${briefing.compared_to} 대비` : " · 전일 비교 없음";
+        briefingDate.textContent = `${briefing.date || "날짜 정보 없음"} KST 마감 기준${comparedTo}`;
+        const mode = String(briefing.mode || "");
+        if (mode === "llm") {
+            briefingMode.textContent = "AI 분석";
+            briefingMode.title = "분석 → 검토 → 작성 LLM 체인으로 생성";
+        } else {
+            briefingMode.textContent = mode.includes("failed") ? "규칙 기반 (AI 실패)" : "규칙 기반";
+            briefingMode.title = mode;
+        }
+    } catch {
+        briefingText.textContent = "첫 KST 마감 스냅샷 생성 후 데일리 브리핑이 표시됩니다.";
+        briefingDate.textContent = "KST 날짜별 마감 차트 변화";
+        briefingMode.textContent = "대기 중";
+    }
+}
+
 // =========================================
 // 8. 중복 제거 및 통합 정렬
 // =========================================
@@ -414,6 +441,7 @@ async function refreshMusic() {
     if (isRefreshing) return;
 
     isRefreshing = true;
+    fetchDailyBriefing();
 
     if (refreshButton) {
         refreshButton.disabled = true;
