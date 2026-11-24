@@ -27,6 +27,8 @@ jobs:
           python-version: "3.12"
       - name: Install requests
         run: python -m pip install requests
+      - name: Run mock tests (no network)
+        run: python -m unittest discover -s tests
       - name: Save daily snapshot and write briefing
         run: python scripts/daily_briefing.py
         env:
@@ -40,6 +42,7 @@ jobs:
           WRITER_API_URL: ${{ vars.WRITER_API_URL }}
           WRITER_MODEL: ${{ vars.WRITER_MODEL }}
       - name: Commit snapshot and briefing
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -49,4 +52,11 @@ jobs:
             exit 0
           fi
           git commit -m "Save KST daily chart briefing"
+          # refresh-charts.yml pushes every 15 minutes; rebase onto it if we raced.
+          # The two workflows touch disjoint files, so the rebase cannot conflict.
+          for attempt in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "Push rejected (attempt ${attempt}); rebasing on latest default branch."
+            git pull --rebase origin "${{ github.event.repository.default_branch }}"
+          done
           git push

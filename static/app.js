@@ -307,8 +307,16 @@ async function fetchDailyBriefing() {
         if (!response.ok) throw new Error("브리핑 파일이 아직 없습니다.");
         const briefing = await response.json();
         briefingText.textContent = briefing.text || "표시할 브리핑이 없습니다.";
-        briefingDate.textContent = `${briefing.date || "날짜 정보 없음"} KST 마감 기준`;
-        briefingMode.textContent = briefing.mode === "llm" ? "AI 분석" : "규칙 기반";
+        const comparedTo = briefing.compared_to ? ` · ${briefing.compared_to} 대비` : " · 전일 비교 없음";
+        briefingDate.textContent = `${briefing.date || "날짜 정보 없음"} KST 마감 기준${comparedTo}`;
+        const mode = String(briefing.mode || "");
+        if (mode === "llm") {
+            briefingMode.textContent = "AI 분석";
+            briefingMode.title = "분석 → 검토 → 작성 LLM 체인으로 생성";
+        } else {
+            briefingMode.textContent = mode.includes("failed") ? "규칙 기반 (AI 실패)" : "규칙 기반";
+            briefingMode.title = mode;
+        }
     } catch {
         briefingText.textContent = "첫 KST 마감 스냅샷 생성 후 데일리 브리핑이 표시됩니다.";
         briefingDate.textContent = "KST 날짜별 마감 차트 변화";

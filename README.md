@@ -16,11 +16,15 @@ GitHub Pages는 Flask 서버를 실행하지 않으므로 GitHub Actions가 15�
 
 ## KST 데일리 브리핑
 
-`Create KST daily chart briefing` Actions가 매일 00:05 KST(UTC 15:05)에 전날 마감 차트를 `static/daily-snapshots/YYYY-MM-DD.json`으로 저장하고, 직전 KST 날짜 스냅샷과 비교해 순위·조회수 변화량을 계산합니다. 최신 한국어 브리핑은 `static/daily-briefing.json`으로 저장되어 대시보드 상단에 표시됩니다. 첫 일일 실행에서는 비교 자료가 없어 전일 비교 불가 안내를 보여줍니다.
+`Create KST daily chart briefing` Actions가 매일 00:05 KST(UTC 15:05)에 실행됩니다.
 
-LLM을 사용하려면 Actions Secrets에 `ANALYST_API_KEY`, `REVIEWER_API_KEY`, `WRITER_API_KEY`를 각각 설정하세요. 세 역할은 분석 → 수치·과장 검토 → 한국어 작성 순으로 실행합니다. 각 역할은 기본 OpenAI 호환 Chat Completions URL과 `gpt-4o-mini` 모델을 사용하며, Actions Variables에 `ANALYST_API_URL`/`ANALYST_MODEL`, `REVIEWER_API_URL`/`REVIEWER_MODEL`, `WRITER_API_URL`/`WRITER_MODEL`을 지정해 역할별 제공자와 모델을 바꿀 수 있습니다. 키가 빠졌거나 호출에 실패하면 규칙 기반 한국어 브리핑을 저장하므로 LLM 키 없이도 기능이 동작합니다.
+1. 그 시점의 `static/chart-data.json`을 전날 KST 날짜의 마감 스냅샷 `static/daily-snapshots/YYYY-MM-DD.json`으로 저장합니다. 이미 저장된 날짜의 스냅샷은 덮어쓰지 않습니다. 수동 재실행은 브리핑만 다시 만들며, 꼭 다시 찍어야 할 때만 `python scripts/daily_briefing.py --force`를 사용합니다.
+2. 그보다 앞선 가장 최근 스냅샷(보통 전일)과 video ID로 비교해 순위 변화(양수=상승)·조회수 변화·신규 진입을 계산합니다. 실행이 하루 빠졌으면 그 이전 스냅샷과 비교하고, 비교 기준 날짜를 `compared_to`에 기록합니다.
+3. 최신 한국어 브리핑을 `static/daily-briefing.json`에 저장하고, 대시보드 상단 카드에 날짜·비교 기준·생성 방식과 함께 표시합니다. 첫 실행에는 비교할 스냅샷이 없어 전일 비교 불가 안내가 표시됩니다.
 
-테스트는 실제 LLM 네트워크 호출 없이 Mock HTTP 응답으로 실행합니다: `python -m unittest discover -s tests`.
+LLM을 사용하려면 Actions Secrets에 `ANALYST_API_KEY`, `REVIEWER_API_KEY`, `WRITER_API_KEY`를 설정하세요. 세 역할은 **분석**(변화 정리) → **검토**(원자료와 수치·과장 대조) → **작성**(원자료·분석·검토 메모를 받아 한국어 3~5문장 작성) 순으로 실행됩니다. 각 역할은 기본으로 OpenAI 호환 Chat Completions URL과 `gpt-4o-mini`를 사용하며, Actions Variables의 `ANALYST_API_URL`/`ANALYST_MODEL`, `REVIEWER_API_URL`/`REVIEWER_MODEL`, `WRITER_API_URL`/`WRITER_MODEL`로 역할마다 다른 제공자와 모델을 지정할 수 있습니다. 키가 하나라도 없거나 호출이 실패하면 규칙 기반 한국어 브리핑을 저장하므로, LLM 키 없이도 끝까지 동작합니다(`mode`: `rules` 또는 `rules (LLM chain failed: …)`).
+
+테스트는 실제 네트워크 호출 없이 Mock HTTP 응답으로 실행되며, 실수로 실제 `requests.post`를 부르면 실패하도록 막혀 있습니다: `python -m unittest discover -s tests`. 데일리 workflow도 브리핑 생성 전에 이 테스트를 실행합니다.
 
 ## 로컬 실행
 
