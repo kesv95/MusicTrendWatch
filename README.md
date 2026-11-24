@@ -14,6 +14,14 @@ GitHub Pages는 Flask 서버를 실행하지 않으므로 GitHub Actions가 15�
 
 수집 실패 시 Actions가 실패 유형을 `chart-data.json`에 기록하고 직전 정상 차트 값과 수집 시각을 유지합니다. 화면에는 오류 유형/메시지와 마지막 정상 차트가 표시됩니다. 변동 비교는 직전 수집값과 비교하며, 최초 수집 영상은 `NEW`로 표시합니다.
 
+## KST 데일리 브리핑
+
+`Create KST daily chart briefing` Actions가 매일 00:05 KST(UTC 15:05)에 전날 마감 차트를 `static/daily-snapshots/YYYY-MM-DD.json`으로 저장하고, 직전 KST 날짜 스냅샷과 비교해 순위·조회수 변화량을 계산합니다. 최신 한국어 브리핑은 `static/daily-briefing.json`으로 저장되어 대시보드 상단에 표시됩니다. 첫 일일 실행에서는 비교 자료가 없어 전일 비교 불가 안내를 보여줍니다.
+
+LLM을 사용하려면 Actions Secrets에 `ANALYST_API_KEY`, `REVIEWER_API_KEY`, `WRITER_API_KEY`를 각각 설정하세요. 세 역할은 분석 → 수치·과장 검토 → 한국어 작성 순으로 실행합니다. 각 역할은 기본 OpenAI 호환 Chat Completions URL과 `gpt-4o-mini` 모델을 사용하며, Actions Variables에 `ANALYST_API_URL`/`ANALYST_MODEL`, `REVIEWER_API_URL`/`REVIEWER_MODEL`, `WRITER_API_URL`/`WRITER_MODEL`을 지정해 역할별 제공자와 모델을 바꿀 수 있습니다. 키가 빠졌거나 호출에 실패하면 규칙 기반 한국어 브리핑을 저장하므로 LLM 키 없이도 기능이 동작합니다.
+
+테스트는 실제 LLM 네트워크 호출 없이 Mock HTTP 응답으로 실행합니다: `python -m unittest discover -s tests`.
+
 ## 로컬 실행
 
 로컬 Flask 앱은 `.env`의 `YOUTUBE_API_KEY`를 사용합니다. 의존성을 설치한 뒤 `python music_api.py`로 실행하세요. GitHub Pages 경로의 주기 수집은 Actions workflow가 담당합니다.

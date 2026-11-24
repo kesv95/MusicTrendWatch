@@ -1,0 +1,52 @@
+name: Create KST daily chart briefing
+
+on:
+  schedule:
+    # 00:05 KST, after the previous KST day's final scheduled chart refresh.
+    - cron: "5 15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-music-briefing
+  cancel-in-progress: false
+
+jobs:
+  briefing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install requests
+        run: python -m pip install requests
+      - name: Save daily snapshot and write briefing
+        run: python scripts/daily_briefing.py
+        env:
+          ANALYST_API_KEY: ${{ secrets.ANALYST_API_KEY }}
+          ANALYST_API_URL: ${{ vars.ANALYST_API_URL }}
+          ANALYST_MODEL: ${{ vars.ANALYST_MODEL }}
+          REVIEWER_API_KEY: ${{ secrets.REVIEWER_API_KEY }}
+          REVIEWER_API_URL: ${{ vars.REVIEWER_API_URL }}
+          REVIEWER_MODEL: ${{ vars.REVIEWER_MODEL }}
+          WRITER_API_KEY: ${{ secrets.WRITER_API_KEY }}
+          WRITER_API_URL: ${{ vars.WRITER_API_URL }}
+          WRITER_MODEL: ${{ vars.WRITER_MODEL }}
+      - name: Commit snapshot and briefing
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add static/daily-snapshots static/daily-briefing.json
+          if git diff --cached --quiet; then
+            echo "Daily snapshot and briefing have not changed."
+            exit 0
+          fi
+          git commit -m "Save KST daily chart briefing"
+          git push
